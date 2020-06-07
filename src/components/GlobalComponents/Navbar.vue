@@ -165,7 +165,7 @@
         },
         methods: {
             getUserId() {
-                axios.get("http://localhost:8082/user-id", {
+                axios.get(`${process.env.DOMAIN_NAME}/user-id`, {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }

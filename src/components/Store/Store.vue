@@ -79,13 +79,13 @@
                 return str;
             },
             getCategoryProducts() {
-                axios.get("http://localhost:8081/products/" + this.category)
+                axios.get(`${process.env.DOMAIN_NAME}/products/` + this.category)
                     .then(response => {
                         this.products = response.data;
                 });
             },
             getSubcategoryProducts() {
-                axios.get("http://localhost:8081/products/" + this.category + "/" + this.subcategory)
+                axios.get(`${process.env.DOMAIN_NAME}/products/` + this.category + "/" + this.subcategory)
                     .then(response => {
                         this.products = response.data;
                 });

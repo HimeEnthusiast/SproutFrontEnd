@@ -206,7 +206,7 @@
                     this.addressError = false;
                     this.postalFormatError = false;
 
-                    axios.post("http://localhost:8082/edit-user-address/" + this.id, {
+                    axios.post(`${process.env.DOMAIN_NAME}/edit-user-address/` + this.id, {
                         address1: this.line1,
                         address2: this.line2,
                         city: this.cit,
@@ -246,7 +246,7 @@
                     this.postalNullError = false;
                     this.postalFormatError = false;
 
-                    axios.post("http://localhost:8082/add-user-address", {
+                    axios.post(`${process.env.DOMAIN_NAME}/add-user-address`, {
                         address1: this.line1,
                         address2: this.line2,
                         city: this.cit,

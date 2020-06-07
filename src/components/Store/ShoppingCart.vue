@@ -88,7 +88,7 @@
         },
         methods: {
             loadProduct: function(id) {
-                axios.post("http://localhost:8081/product-by-id", {
+                axios.post(`${process.env.DOMAIN_NAME}/product-by-id`, {
                     id: id
                 }).then((response) => {
                     this.products.push(response.data);

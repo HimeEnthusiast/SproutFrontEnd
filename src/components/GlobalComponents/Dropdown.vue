@@ -78,7 +78,7 @@
             }
         },
         mounted() {
-            axios.post("http://localhost:8081/subcategory-per-category", {
+            axios.post(`${process.env.DOMAIN_NAME}/subcategory-per-category`, {
                 category: this.category
             }).then((response) => {
                 response.data.forEach(x => {
