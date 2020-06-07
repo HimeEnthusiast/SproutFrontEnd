@@ -51,7 +51,7 @@ import axios from 'axios';
                 cancelButton.style.display = "initial";
             },
             getUserInfo() {
-                axios.get("http://localhost:8082/user/" + this.id, {
+                axios.get(`${process.env.DOMAIN_NAME}/user/` + this.id, {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }
@@ -62,7 +62,7 @@ import axios from 'axios';
                 });
             },
             editUserField(fn, ln, un, pw) {
-                axios.post("http://localhost:8082/edit-user/" + this.id, {
+                axios.post(`${process.env.DOMAIN_NAME}/edit-user/` + this.id, {
                     firstName: fn,
                     lastName: ln,
                     username: un,

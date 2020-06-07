@@ -99,7 +99,7 @@
         },
         methods: {
             sendData() {
-                axios.post("http://localhost:8082/checkout", {
+                axios.post(`${process.env.DOMAIN_NAME}/checkout`, {
                     products: this.cart,
                     address1: this.address1,
                     address2: this.address2,
