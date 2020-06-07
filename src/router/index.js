@@ -4,8 +4,7 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-//Vue
-//import App from './components/Views/App'
+
 import Home from '../components/Home/Home'
 import Register from '../components/Account/Register'
 import Login from '../components/Account/Login'
@@ -59,7 +58,7 @@ const routes = [
     component: Checkout
   },
   {
-    path: '/checkout/complete',
+    path: '/checkout/:id/complete',
     name: 'thankyou',
     component: ThankYou
   },

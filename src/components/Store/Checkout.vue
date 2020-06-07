@@ -118,9 +118,9 @@
                         'Authorization': 'Bearer ' + this.jwt
                     }
                 }).then((response) => {
-                    console.log(response.data);
+                    let id = response.data;
                     localStorage.removeItem('cart');
-                    this.$router.push("/checkout/complete");
+                    this.$router.push({path: `/checkout/${id}/complete`});
                 }, (error) => {
                     console.log(error);
                 });

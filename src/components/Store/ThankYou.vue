@@ -2,6 +2,11 @@
     <div id="root">
         <h1>Thank you!</h1>
         <span id="text">Your order is now complete.</span>
+
+        <div id="bottom">
+            <span id="total">Total: $0.00</span>
+            <button>View Order</button>
+        </div>
     </div>
 </template>
 
@@ -27,6 +32,6 @@
 
 <script>
 export default {
-    name: "ThankYou"
+    name: "thankyou"
 }
 </script>
