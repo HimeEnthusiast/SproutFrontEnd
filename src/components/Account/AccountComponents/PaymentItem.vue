@@ -197,7 +197,7 @@
                 document.getElementById("payment-popup").style.display = "none";
             },
             getPayments() {
-                axios.get(`${process.env.DOMAIN_NAME}/user/` + this.id, {
+                axios.get("http://localhost:8082/user/" + this.id, {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }
@@ -212,7 +212,7 @@
                 });
             },
             deletePayment(paymentId) {
-                axios.post(`${process.env.DOMAIN_NAME}/delete-payment/` + paymentId, {
+                axios.post("http://localhost:8082/delete-payment/" + paymentId, {
                     id: paymentId
                 },
                 {
