@@ -78,7 +78,7 @@
             }
         },
         mounted() {
-            axios.post(`${process.env.DOMAIN_NAME}/subcategory-per-category`, {
+            axios.post(`https://www.isabellapiantoni.tech/api/subcategory-per-category`, {
                 category: this.category
             }).then((response) => {
                 response.data.forEach(x => {
