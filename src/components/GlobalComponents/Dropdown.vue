@@ -99,7 +99,10 @@
                     'Content-Type': 'application/json'
                 }});
 
-                alert(apiClient.get("/subcategory-per-category/" + this.category));
+                apiClient.get("/subcategory-per-category/" + this.category)
+                    .then((response) => {
+                        alert(response.data);
+                    });
         },
         methods: {
             drop: function() {
