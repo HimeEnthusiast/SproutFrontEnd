@@ -80,7 +80,7 @@
             }
         },
         mounted() {
-            apiRequest.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category)
+            apiRequest.get("/subcategory-per-category/" + this.category)
             .then((response) => {
                 // response.data.forEach(x => {
                 //     this.subcategories.push(x);
