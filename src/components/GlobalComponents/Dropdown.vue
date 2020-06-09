@@ -94,6 +94,8 @@
                 }
             }
 
+            getSubs();
+
             // axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
             //     headers: {
             //         'Content-Type' : 'application/json'
