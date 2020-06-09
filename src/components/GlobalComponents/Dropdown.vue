@@ -80,6 +80,10 @@
         mounted() {
             axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category)
             .then((response) => {
+                if(typeof(response) === "string") {
+                    response = JSON.parse(response);
+                }
+                
                 response.data.forEach(x => {
                     this.subcategories.push(x);
                 });
