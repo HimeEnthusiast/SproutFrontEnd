@@ -81,12 +81,15 @@
             axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category)
             .then((response) => {
                 if(typeof(response) === "string") {
-                    response = JSON.parse(response);
+                    alert("Data is string!");
+                    //response = JSON.parse(response);
+                } else if(typeof(response) === "JSON") {
+                    alert("Data if JSON!");
                 }
-                
-                response.data.forEach(x => {
-                    this.subcategories.push(x);
-                });
+
+                // response.data.forEach(x => {
+                //     this.subcategories.push(x);
+                // });
             }, (error) => {
                 console.log(error);
             });
