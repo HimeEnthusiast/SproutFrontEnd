@@ -78,6 +78,22 @@
             }
         },
         mounted() {
+            const getSubs = async() => {
+                try {
+                    const res = await axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, { 
+                        headers: {
+                            'Content-Type' : 'application/json'
+                        }
+                    })
+
+                    // const subs = res.data();
+                    alert(res.data);
+                }
+                catch (e) {
+                    console.error(e);
+                }
+            }
+
             // axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
             //     headers: {
             //         'Content-Type' : 'application/json'
@@ -92,17 +108,17 @@
             //     console.log(error);
             // });
 
-            const apiClient = axios.create({ 
-                baseURL: 'https://isabellapiantoni.tech/api', 
-                headers: {
-                    'Accept': 'application/json', 
-                    'Content-Type': 'application/json'
-                }});
+            // const apiClient = axios.create({ 
+            //     baseURL: 'https://isabellapiantoni.tech/api', 
+            //     headers: {
+            //         'Accept': 'application/json', 
+            //         'Content-Type': 'application/json'
+            //     }});
 
-                apiClient.get("/subcategory-per-category/" + this.category)
-                    .then((response) => {
-                        alert(response.data);
-                    });
+            //     apiClient.get("/subcategory-per-category/" + this.category)
+            //         .then((response) => {
+            //             alert(response.data);
+            //         });
         },
         methods: {
             drop: function() {
