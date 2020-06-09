@@ -78,19 +78,28 @@
             }
         },
         mounted() {
-            axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
+            // axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
+            //     headers: {
+            //         'Content-Type' : 'application/json'
+            //     }
+            // })
+            // .then((response) => {
+            //     // response.data.forEach(x => {
+            //     //     this.subcategories.push(x);
+            //     // });
+            //     console.log(response);
+            // }, (error) => {
+            //     console.log(error);
+            // });
+
+            const apiClient = axios.create({ 
+                baseURL: 'https://isabellapiantoni.tech/api', 
                 headers: {
-                    'Content-Type' : 'application/json'
-                }
-            })
-            .then((response) => {
-                // response.data.forEach(x => {
-                //     this.subcategories.push(x);
-                // });
-                console.log(response);
-            }, (error) => {
-                console.log(error);
-            });
+                    'Accept': 'application/json', 
+                    'Content-Type': 'application/json'
+                }});
+
+                alert(apiClient.get("/subcategory-per-category/" + this.category));
         },
         methods: {
             drop: function() {
