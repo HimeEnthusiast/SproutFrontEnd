@@ -80,10 +80,10 @@
         mounted() {
             axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category)
             .then((response) => {
-                response.data.forEach(x => {
-                    // this.subcategories.push(x);
-                    alert(response.data);
-                });
+                // response.data.forEach(x => {
+                //     this.subcategories.push(x);
+                // });
+                alert(response.data);
             }, (error) => {
                 console.log(error);
             });
