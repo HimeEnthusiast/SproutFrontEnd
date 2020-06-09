@@ -83,7 +83,7 @@
                 if(typeof(response) === "string") {
                     alert("Data is string!");
                     //response = JSON.parse(response);
-                } else if(typeof(response) === "JSON") {
+                } else {
                     alert("Data if JSON!");
                 }
 
