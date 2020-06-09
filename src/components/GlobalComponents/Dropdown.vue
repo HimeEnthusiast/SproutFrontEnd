@@ -70,6 +70,8 @@
 
 <script>
     import axios from 'axios';
+    const apiRequest = axios.create({baseURL: 'https://www.isabellapiantoni.tech/api', 
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json'}});
 
     export default {
         data() {
@@ -78,7 +80,7 @@
             }
         },
         mounted() {
-            axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category)
+            apiRequest.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category)
             .then((response) => {
                 // response.data.forEach(x => {
                 //     this.subcategories.push(x);
