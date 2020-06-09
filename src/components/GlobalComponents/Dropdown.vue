@@ -87,7 +87,7 @@
                 // response.data.forEach(x => {
                 //     this.subcategories.push(x);
                 // });
-                console.log(response.data);
+                console.log(response);
             }, (error) => {
                 console.log(error);
             });
