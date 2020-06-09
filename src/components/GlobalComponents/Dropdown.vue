@@ -84,10 +84,10 @@
                 }
             })
             .then((response) => {
-                response.data.forEach(x => {
-                    this.subcategories.push(x);
-                });
-                // alert(response.data);
+                // response.data.forEach(x => {
+                //     this.subcategories.push(x);
+                // });
+                console.log(response.data);
             }, (error) => {
                 console.log(error);
             });
