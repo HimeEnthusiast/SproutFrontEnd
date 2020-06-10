@@ -151,13 +151,14 @@
             return {
                 logoImage: "../../assets/logoaltcolour.svg",
                 id: this.$store.getters.getUserId,
-                jwt: this.$cookies.get('jwt').replace(/"/g,""),
+                jwt: "",
                 jwtExists: this.$store.getters.getAuthentication
             }
         },
         beforeCreate() {
             if(this.$cookies.get('jwt')) {
                 this.$store.commit('setAuthentication', true);
+                this.jwt = this.$cookies.get('jwt').replace(/"/g,"");
             }
         },
         mounted() {

@@ -78,31 +78,31 @@
             }
         },
         mounted() {
-            // axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
-            //     headers: {
-            //         'Content-Type' : 'application/json'
-            //     }
-            // })
-            // .then((response) => {
-            //     // response.data.forEach(x => {
-            //     //     this.subcategories.push(x);
-            //     // });
-            //     console.log(response);
-            // }, (error) => {
-            //     console.log(error);
-            // });
-
-            const apiClient = axios.create({ 
-                baseURL: 'https://isabellapiantoni.tech', 
+            axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
                 headers: {
-                    'Accept': 'application/json', 
-                    'Content-Type': 'application/json'
-                }});
+                    'Content-Type' : 'application/json'
+                }
+            })
+            .then((response) => {
+                // response.data.forEach(x => {
+                //     this.subcategories.push(x);
+                // });
+                console.log(response);
+            }, (error) => {
+                console.log(error);
+            });
 
-                apiClient.get("/api/subcategory-per-category/" + this.category)
-                    .then((response) => {
-                        alert(response.data);
-                    });
+            // const apiClient = axios.create({ 
+            //     baseURL: 'https://isabellapiantoni.tech/api', 
+            //     headers: {
+            //         'Accept': 'application/json', 
+            //         'Content-Type': 'application/json'
+            //     }});
+
+            //     apiClient.get("/subcategory-per-category/" + this.category)
+            //         .then((response) => {
+            //             alert(response.data);
+            //         });
         },
         methods: {
             drop: function() {
