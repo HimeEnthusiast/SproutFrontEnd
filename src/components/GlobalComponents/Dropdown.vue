@@ -97,7 +97,7 @@
                 // httpsAgent: new https.Agent({
                 //     rejectUnauthorized: false
                 // }),
-                baseURL: '127.0.0.1:8081/api', 
+                baseURL: 'https://127.0.0.1:8081/api', 
                 headers: {
                     // 'Accept': 'application/json', 
                     'Content-Type': 'application/json'
