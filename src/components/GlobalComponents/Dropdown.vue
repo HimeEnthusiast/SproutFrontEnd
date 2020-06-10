@@ -97,9 +97,9 @@
                 // httpsAgent: new https.Agent({
                 //     rejectUnauthorized: false
                 // }),
-                baseURL: 'https://isabellapiantoni.tech:8081/api', 
+                baseURL: 'https://isabellapiantoni.tech/api', 
                 headers: {
-                    'Accept': 'application/json', 
+                    // 'Accept': 'application/json', 
                     'Content-Type': 'application/json'
                 }
             });
