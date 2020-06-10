@@ -79,35 +79,35 @@
             }
         },
         mounted() {
-            axios.get("https://127.0.0.1:8081/api/subcategory-per-category/" + this.category, {
-                headers: {
-                    'Content-Type' : 'application/json'
-                }
-            })
-            .then((response) => {
-                // response.data.forEach(x => {
-                //     this.subcategories.push(x);
-                // });
-                console.log(response.data);
-            }, (error) => {
-                console.log(error);
-            });
-
-            // const apiClient = axios.create({ 
-            //     // httpsAgent: new https.Agent({
-            //     //     rejectUnauthorized: false
-            //     // }),
-            //     baseURL: 'https://127.0.0.1:8081/api', 
+            // axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
             //     headers: {
-            //         // 'Accept': 'application/json', 
-            //         'Content-Type': 'application/json'
+            //         'Content-Type' : 'application/json'
             //     }
+            // })
+            // .then((response) => {
+            //     // response.data.forEach(x => {
+            //     //     this.subcategories.push(x);
+            //     // });
+            //     console.log(response.data);
+            // }, (error) => {
+            //     console.log(error);
             // });
 
-            // apiClient.get("/subcategory-per-category/" + this.category)
-            //     .then((response) => {
-            //         console.log(response.data);
-            //     });
+            const apiClient = axios.create({ 
+                // httpsAgent: new https.Agent({
+                //     rejectUnauthorized: false
+                // }),
+                baseURL: ':8081/api', 
+                headers: {
+                    // 'Accept': 'application/json', 
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            apiClient.get("/subcategory-per-category/" + this.category)
+                .then((response) => {
+                    console.log(response.data);
+                });
         },
         methods: {
             drop: function() {
