@@ -78,8 +78,8 @@
                 subcategories: []
             }
         },
-        mounted() {
-            axios.get("https://159.203.41.170:8081/api/subcategory-per-category/" + this.category, {
+        beforeCreate() {
+            axios.get("https://www.isabellapiantoni.tech/api/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
