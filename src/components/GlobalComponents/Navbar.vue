@@ -167,6 +167,7 @@
         methods: {
             getUserId() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+                alert(this.jwt);
 
                 axios.get(url + "/user-id", {
                     headers: {
