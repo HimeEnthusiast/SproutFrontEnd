@@ -202,7 +202,7 @@
                 document.getElementById("address-popup").style.display = "none";
             },
             getAddresses() {
-                axios.get(process.env.DOMAIN_NAME_AUTH + "/user/" + this.id, {
+                axios.get("auth/api/user/" + this.id, {
                     headers: {
                         'Authorization' : 'Bearer ' + this.jwt
                     }
@@ -217,7 +217,7 @@
                 });
             },
             deleteAddress(addressId) {
-                axios.post(process.env.DOMAIN_NAME_AUTH + "/delete-address/" + addressId, {
+                axios.post("auth/api/delete-address/" + addressId, {
                     id: addressId
                 },
                 {

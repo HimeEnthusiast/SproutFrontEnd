@@ -199,7 +199,7 @@
                     this.nameError = false;
                     this.cvvFormatError = false;
 
-                    axios.post(process.env.DOMAIN_NAME_AUTH + "/edit-user-payment/" + this.id, {
+                    axios.post("auth/api/edit-user-payment/" + this.id, {
                         ccNumber: this.creditNumber,
                         cardBearer: this.cardName,
                         cvv: this.cardCvv
@@ -232,7 +232,7 @@
                 let cvvInput = document.getElementById("cvv");
 
                 if(creditInput.checkValidity() && nameInput.checkValidity() && cvvInput.checkValidity()) {
-                    axios.post(process.env.DOMAIN_NAME_AUTH + "/add-user-payment", {
+                    axios.post("auth/api/add-user-payment", {
                         ccNumber: this.creditNumber,
                         cardBearer: this.cardName,
                         cvv: this.cardCvv

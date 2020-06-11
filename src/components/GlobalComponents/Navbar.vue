@@ -166,7 +166,7 @@
         },
         methods: {
             getUserId() {
-                axios.get(process.env.DOMAIN_NAME_AUTH + "/user-id", {
+                axios.get("auth/api/user-id", {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }

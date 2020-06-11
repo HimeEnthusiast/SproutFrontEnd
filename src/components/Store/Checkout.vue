@@ -99,7 +99,7 @@
         },
         methods: {
             sendData() {
-                axios.post(process.env.DOMAIN_NAME_AUTH + "/checkout", {
+                axios.post("auth/api/checkout", {
                     products: this.cart,
                     address1: this.address1,
                     address2: this.address2,

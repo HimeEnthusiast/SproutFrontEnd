@@ -206,7 +206,7 @@
                     this.addressError = false;
                     this.postalFormatError = false;
 
-                    axios.post(process.env.DOMAIN_NAME_AUTH + "/edit-user-address/" + this.id, {
+                    axios.post("auth/api/edit-user-address/" + this.id, {
                         address1: this.line1,
                         address2: this.line2,
                         city: this.cit,
@@ -246,7 +246,7 @@
                     this.postalNullError = false;
                     this.postalFormatError = false;
 
-                    axios.post(process.env.DOMAIN_NAME_AUTH + "/add-user-address", {
+                    axios.post("auth/api/add-user-address", {
                         address1: this.line1,
                         address2: this.line2,
                         city: this.cit,

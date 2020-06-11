@@ -51,7 +51,7 @@ import axios from 'axios';
                 cancelButton.style.display = "initial";
             },
             getUserInfo() {
-                axios.get(process.env.DOMAIN_NAME_AUTH + "/user/" + this.id, {
+                axios.get("auth/api/user/" + this.id, {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }
@@ -62,7 +62,7 @@ import axios from 'axios';
                 });
             },
             editUserField(fn, ln, un, pw) {
-                axios.post(process.env.DOMAIN_NAME_AUTH + "/edit-user/" + this.id, {
+                axios.post("auth/api/edit-user/" + this.id, {
                     firstName: fn,
                     lastName: ln,
                     username: un,
