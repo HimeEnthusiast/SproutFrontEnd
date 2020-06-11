@@ -116,9 +116,6 @@
             this.cart.forEach(x => {
                 this.loadProduct(x);
             });
-
-            console.log(this.calculateCost);
-
         },
         data() {
             return {

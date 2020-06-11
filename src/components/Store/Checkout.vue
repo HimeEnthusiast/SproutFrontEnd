@@ -17,6 +17,10 @@
                             @savePayment="savePayment = $event">
                 </PaymentForm>
 
+                <GuestEmailForm v-if="!jwtPresent"
+                            @email="email = $event">
+                </GuestEmailForm>
+
                 <input type="submit" id="order-button" value="Complete Order" />
             </div>
         </form>
@@ -52,6 +56,7 @@
         color: #ffffff;
         border-radius: 10px;
         bottom: 0;
+        margin-left: 20px;
     }
 
     #order-button:hover {
@@ -66,15 +71,18 @@
 
     import AddressForm from "./StoreComponents/AddressForm";
     import PaymentForm from "./StoreComponents/PaymentForm";
+    import GuestEmailForm from "./StoreComponents/GuestEmailForm";
 
     export default {
         name: "checkout",
         components: {
             AddressForm,
-            PaymentForm
+            PaymentForm,
+            GuestEmailForm
         },
         data() {
             return {
+                email: "",
                 address1: "",
                 address2: "",
                 city: "",
@@ -101,31 +109,54 @@
             sendData() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
 
-                axios.post(url + "/checkout", {
-                    products: this.cart,
-                    address1: this.address1,
-                    address2: this.address2,
-                    city: this.city,
-                    province: this.province,
-                    postalcode: this.postalcode,
-                    ccNumber: this.ccNumber,
-                    cardBearer: this.cardBearer,
-                    cvv: this.cvv,
-                    saveAddress: this.saveAddress,
-                    savePayment: this.savePayment,
-                    jwtPresent: this.jwtPresent
-                },
-                {
-                    headers: {
-                        'Authorization': 'Bearer ' + this.jwt
-                    }
-                }).then((response) => {
-                    let id = response.data;
-                    localStorage.removeItem('cart');
-                    this.$router.push({path: `/checkout/${id}/complete`});
-                }, (error) => {
-                    console.log(error);
-                });
+                if(this.jwtPresent) {
+                    axios.post(url + "/checkout", {
+                        products: this.cart,
+                        address1: this.address1,
+                        address2: this.address2,
+                        city: this.city,
+                        province: this.province,
+                        postalcode: this.postalcode,
+                        ccNumber: this.ccNumber,
+                        cardBearer: this.cardBearer,
+                        cvv: this.cvv,
+                        saveAddress: this.saveAddress,
+                        savePayment: this.savePayment,
+                        jwtPresent: this.jwtPresent
+                    },
+                    {
+                        headers: {
+                            'Authorization': 'Bearer ' + this.jwt
+                        }
+                    }).then((response) => {
+                        let id = response.data;
+                        localStorage.removeItem('cart');
+                        this.$router.push({path: `/checkout/${id}/complete`});
+                    }, (error) => {
+                        console.log(error);
+                    });
+                } else {
+                    axios.post(url + "/checkout-as-guest", {
+                        products: this.cart,
+                        address1: this.address1,
+                        address2: this.address2,
+                        city: this.city,
+                        province: this.province,
+                        postalcode: this.postalcode,
+                        ccNumber: this.ccNumber,
+                        cardBearer: this.cardBearer,
+                        cvv: this.cvv,
+                        saveAddress: this.saveAddress,
+                        savePayment: this.savePayment,
+                        jwtPresent: this.jwtPresent
+                    }).then((response) => {
+                        let id = response.data;
+                        localStorage.removeItem('cart');
+                        this.$router.push({path: `/checkout/${id}/complete`});
+                    }, (error) => {
+                        console.log(error);
+                    });
+                }
             }
         }
     }
