@@ -1,12 +1,12 @@
 <template>
     <div id="root">
         <div id="title" ref="title" @mouseover="drop" @mouseleave="close"> 
-            <router-link class="router-link" :to="{name: 'products-category', params: {category: category.replace(/\s+/g, '-').toLowerCase()}}">{{title}}</router-link>
+            <router-link class="router-link" :to="{name: 'products-category', params: {category: category.replace(/\s+/g, '-').toLowerCase(), subcategory: null}}">{{title}}</router-link>
         </div>
 
         <div id="dropdown" ref="dropdown" @mouseover="drop" @mouseleave="close">
             <p v-for="subcategory in subcategories" :key="subcategory.id">
-                <router-link class="router-link" :to="{name: 'products-subcategory', params: {category: category, subcategory: subcategory.replace(/\s+/g, '-').toLowerCase()}}">{{subcategory}}</router-link>
+                <router-link class="router-link" :to="{name: 'products-category', params: {category: category, subcategory: subcategory.replace(/\s+/g, '-').toLowerCase()}}">{{subcategory}}</router-link>
             </p>
         </div>
     </div>
