@@ -71,7 +71,7 @@
 <script>
     //import axios from 'axios';
     const axios = require('axios').create({
-        baseUrl: `${process.env.VUE_APP_DOMAIN_NAME_AUTH}`
+        baseUrl: `${process.env.VUE_APP_DOMAIN_NAME_PRODUCT}`
     });
 
     export default {
