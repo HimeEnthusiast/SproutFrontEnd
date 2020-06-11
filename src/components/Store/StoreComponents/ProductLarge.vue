@@ -132,7 +132,7 @@
             this.addToCartButton = this.$refs["add-cart-button"];
             const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
             
-            axios.get(url + "/product/api/product-by-id/" + this.id)
+            axios.get(url + "/product-by-id/" + this.id)
             .then((response) => {
                 this.name = response.data.name;
                 this.description = response.data.description;
