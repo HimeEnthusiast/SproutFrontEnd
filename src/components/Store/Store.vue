@@ -79,7 +79,7 @@
                 return str;
             },
             getCategoryProducts() {
-                alert("Category: " + this.category);
+                console.log("Category: " + this.category);
 
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
@@ -89,7 +89,7 @@
                 });
             },
             getSubcategoryProducts() {
-                alert("Subcategory: " + this.subcategory);
+                console.log("Subcategory: " + this.subcategory);
 
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
