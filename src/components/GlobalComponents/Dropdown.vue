@@ -78,7 +78,7 @@
             }
         },
         mounted() {
-            axios.get("https://www.isabellapiantoni.tech/subcategory-per-category/" + this.category, {
+            axios.get("https://www.isabellapiantoni.tech/product/api/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
