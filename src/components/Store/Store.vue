@@ -61,11 +61,11 @@
                 subcategory: ""
             }
         },
-        mounted() {
+        created() {
             this.subcategory = this.$route.params.subcategory;
             this.category = this.$route.params.category;
 
-            if(this.subcategory != null) {
+            if(this.$store.getters.getSubcategory) {
                 this.getSubcategoryProducts();
             } else {
                 this.getCategoryProducts();

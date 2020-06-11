@@ -32,14 +32,14 @@ const routes = [
     name: 'login',
     component: Login
   },
-  // {
-  //   path: '/products/:category',
-  //   name: 'products-category',
-  //   component: Store
-  // },
+  {
+    path: '/products/:category',
+    name: 'products-category',
+    component: Store
+  },
   {
     path: '/products/:category/:subcategory',
-    name: 'products-category',
+    name: 'products-subcategory',
     component: Store
   },
   {

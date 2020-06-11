@@ -8,6 +8,9 @@ export default new Vuex.Store({
     user: {
       id: 0,
       isAuthenticated: false
+    },
+    productsView: {
+      hasSubcategory: false
     }
   },
   getters: {
@@ -16,6 +19,9 @@ export default new Vuex.Store({
     },
     getAuthentication: state => {
       return state.user.isAuthenticated;
+    },
+    getSubcategory: state => {
+      return state.productsView.hasSubcategory;
     }
   },
   mutations: {
@@ -24,6 +30,9 @@ export default new Vuex.Store({
     },
     setAuthentication(state, isAuthenticated) {
       state.user.isAuthenticated = isAuthenticated;
+    },
+    setSubcategory(state, hasSubcategory) {
+      state.productsView.hasSubcategory = hasSubcategory; 
     }
   },
   actions: {},

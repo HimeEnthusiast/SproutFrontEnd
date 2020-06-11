@@ -1,12 +1,25 @@
 <template>
     <div id="root">
         <div id="title" ref="title" @mouseover="drop" @mouseleave="close"> 
-            <router-link class="router-link" :to="{name: 'products-category', params: {category: category.replace(/\s+/g, '-').toLowerCase(), subcategory: ''}}">{{title}}</router-link>
+            <router-link 
+                class="router-link" 
+                :to="{name: 'products-category', 
+                params: {category: category.replace(/\s+/g, '-').toLowerCase()}}" 
+                @click="subcategoryExists(false)">
+                    {{title}}
+            </router-link>
         </div>
 
         <div id="dropdown" ref="dropdown" @mouseover="drop" @mouseleave="close">
             <p v-for="subcategory in subcategories" :key="subcategory.id">
-                <router-link class="router-link" :to="{name: 'products-category', params: {category: category, subcategory: subcategory.replace(/\s+/g, '-').toLowerCase()}}">{{subcategory}}</router-link>
+                <router-link 
+                    class="router-link" 
+                    :to="{name: 'products-subcategory', 
+                    params: {category: category, 
+                    subcategory: subcategory.replace(/\s+/g, '-').toLowerCase()}}" 
+                    @click="subcategoryExists(true)">
+                    {{subcategory}}
+                </router-link>
             </p>
         </div>
     </div>
@@ -111,6 +124,13 @@
                 dropdown.style.display = "none";
                 title.style.backgroundColor = "transparent";
                 title.style.color = "#00A896";
+            },
+            subcategoryExists(exists) {
+                if(exists) {
+                    this.$store.commit('setSubcategory', true);
+                } else {
+                    this.$store.commit('setSubcategory', false);
+                }
             }
         },
         props: [
