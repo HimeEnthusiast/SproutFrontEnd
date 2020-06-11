@@ -69,7 +69,10 @@
 </style>
 
 <script>
-    import axios from 'axios';
+    //import axios from 'axios';
+    const axios = require('axios').create({
+        baseUrl: `${process.env.VUE_APP_DOMAIN_NAME_AUTH}`
+    });
 
     export default {
         data() {
@@ -78,7 +81,7 @@
             }
         },
         mounted() {
-            axios.get("https://www.isabellapiantoni.tech/product/api/subcategory-per-category/" + this.category, {
+            axios.get("/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
