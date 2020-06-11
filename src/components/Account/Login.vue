@@ -159,7 +159,7 @@
         },
         methods: {
             login: function() {
-                axios.post(`${process.env.DOMAIN_NAME}/authenticate`, {
+                axios.post(process.env.DOMAIN_NAME_AUTH + "/authenticate", {
                     username: this.email,
                     password: this.password
                 }).then((response) => {

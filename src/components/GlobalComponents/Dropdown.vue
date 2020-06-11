@@ -70,7 +70,6 @@
 
 <script>
     import axios from 'axios';
-    // import https from 'https';
 
     export default {
         data() {
@@ -79,7 +78,7 @@
             }
         },
         mounted() {
-            axios.get("https://www.isabellapiantoni.tech/product/api/subcategory-per-category/" + this.category, {
+            axios.get(process.env.DOMAIN_NAME_PRODUCT + "/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
@@ -88,6 +87,7 @@
                 response.data.forEach(x => {
                     this.subcategories.push(x);
                 });
+
                 // console.log(response.data);
             }, (error) => {
                 console.log(error);

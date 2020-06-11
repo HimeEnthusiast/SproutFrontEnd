@@ -88,9 +88,8 @@
         },
         methods: {
             loadProduct: function(id) {
-                axios.post(`${process.env.DOMAIN_NAME}/product-by-id`, {
-                    id: id
-                }).then((response) => {
+                axios.post(process.env.DOMAIN_NAME_PRODUCT + "/product-by-id" + id)
+                .then((response) => {
                     this.products.push(response.data);
                 }, (error) => {
                     console.log(error);

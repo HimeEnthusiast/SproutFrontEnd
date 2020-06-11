@@ -131,9 +131,8 @@
             this.id = this.$route.params.id;
             this.addToCartButton = this.$refs["add-cart-button"];
             
-            axios.post(`${process.env.DOMAIN_NAME}/product-by-id`, {
-                id: this.id
-            }).then((response) => {
+            axios.post(process.env.DOMAIN_NAME_PRODUCT + "/product-by-id" + this.id)
+            .then((response) => {
                 this.name = response.data.name;
                 this.description = response.data.description;
                 this.price = response.data.price;
