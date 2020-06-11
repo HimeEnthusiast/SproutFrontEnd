@@ -159,7 +159,9 @@
         },
         methods: {
             login: function() {
-                axios.post("auth/api/authenticate", {
+                const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
+
+                axios.post(url + "/authenticate", {
                     username: this.email,
                     password: this.password
                 }).then((response) => {

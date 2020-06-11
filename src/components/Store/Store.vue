@@ -79,13 +79,17 @@
                 return str;
             },
             getCategoryProducts() {
-                axios.get("https://www.isabellapiantoni.tech/product/api/products/" + this.category)
+                const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
+
+                axios.get(url + "/products/" + this.category)
                     .then(response => {
                         this.products = response.data;
                 });
             },
             getSubcategoryProducts() {
-                axios.get("product/api/products/" + this.category + "/" + this.subcategory)
+                const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
+
+                axios.get(url + "/products/" + this.category + "/" + this.subcategory)
                     .then(response => {
                         this.products = response.data;
                 });

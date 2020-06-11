@@ -99,7 +99,9 @@
         },
         methods: {
             sendData() {
-                axios.post("auth/api/checkout", {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+
+                axios.post(url + "/checkout", {
                     products: this.cart,
                     address1: this.address1,
                     address2: this.address2,

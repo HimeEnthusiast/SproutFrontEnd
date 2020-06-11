@@ -197,7 +197,9 @@
                 document.getElementById("payment-popup").style.display = "none";
             },
             getPayments() {
-                axios.get("auth/api/user/" + this.id, {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+
+                axios.get(url + "/user/" + this.id, {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }
@@ -212,7 +214,9 @@
                 });
             },
             deletePayment(paymentId) {
-                axios.post("auth/api/delete-payment/" + paymentId, {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+
+                axios.post(url + "/delete-payment/" + paymentId, {
                     id: paymentId
                 },
                 {

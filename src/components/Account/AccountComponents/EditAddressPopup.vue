@@ -197,6 +197,7 @@
                 this.$emit('clicked', 'value');
             },
             editData() {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
                 let cityField = document.getElementById("city");
                 let addressField = document.getElementById("address1");
                 let postalField = document.getElementById("postalcode");
@@ -206,7 +207,7 @@
                     this.addressError = false;
                     this.postalFormatError = false;
 
-                    axios.post("auth/api/edit-user-address/" + this.id, {
+                    axios.post(url + "/edit-user-address/" + this.id, {
                         address1: this.line1,
                         address2: this.line2,
                         city: this.cit,
@@ -236,6 +237,7 @@
                 }
             },
             createData() {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
                 let cityField = document.getElementById("city");
                 let addressField = document.getElementById("address1");
                 let postalField = document.getElementById("postalcode");
@@ -246,7 +248,7 @@
                     this.postalNullError = false;
                     this.postalFormatError = false;
 
-                    axios.post("auth/api/add-user-address", {
+                    axios.post(url + "/add-user-address", {
                         address1: this.line1,
                         address2: this.line2,
                         city: this.cit,

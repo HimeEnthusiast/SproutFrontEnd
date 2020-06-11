@@ -193,13 +193,14 @@
                 let creditInput = document.getElementById("ccnumber");
                 let nameInput = document.getElementById("full-name");
                 let cvvInput = document.getElementById("cvv");
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
 
                 if(creditInput.checkValidity() && nameInput.checkValidity() && cvvInput.checkValidity()) {
                     this.creditFormatError = false;
                     this.nameError = false;
                     this.cvvFormatError = false;
 
-                    axios.post("auth/api/edit-user-payment/" + this.id, {
+                    axios.post(url + "/edit-user-payment/" + this.id, {
                         ccNumber: this.creditNumber,
                         cardBearer: this.cardName,
                         cvv: this.cardCvv
@@ -227,12 +228,13 @@
                 }
             },
             createData() {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
                 let creditInput = document.getElementById("ccnumber");
                 let nameInput = document.getElementById("full-name");
                 let cvvInput = document.getElementById("cvv");
 
                 if(creditInput.checkValidity() && nameInput.checkValidity() && cvvInput.checkValidity()) {
-                    axios.post("auth/api/add-user-payment", {
+                    axios.post(url + "/add-user-payment", {
                         ccNumber: this.creditNumber,
                         cardBearer: this.cardName,
                         cvv: this.cardCvv

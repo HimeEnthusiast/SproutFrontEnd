@@ -166,7 +166,9 @@
         },
         methods: {
             getUserId() {
-                axios.get("auth/api/user-id", {
+                const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+
+                axios.get(url + "/user-id", {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }
