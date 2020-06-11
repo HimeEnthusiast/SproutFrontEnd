@@ -79,6 +79,8 @@
                 return str;
             },
             getCategoryProducts() {
+                alert("Category: " + this.category);
+
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
                 axios.get(url + "/products/" + this.category)
@@ -87,6 +89,8 @@
                 });
             },
             getSubcategoryProducts() {
+                alert("Subcategory: " + this.subcategory);
+
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
                 axios.get(url + "/products/" + this.category + "/" + this.subcategory)
