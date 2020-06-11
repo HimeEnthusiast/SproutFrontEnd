@@ -90,7 +90,7 @@
             loadProduct: function(id) {
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
-                axios.post(url + "/product-by-id/" + id)
+                axios.get(url + "/product-by-id/" + id)
                 .then((response) => {
                     this.products.push(response.data);
                 }, (error) => {
