@@ -79,7 +79,7 @@
                 return str;
             },
             getCategoryProducts() {
-                axios.get("product/api/products/" + this.category)
+                axios.get("https://www.isabellapiantoni.tech/product/api/products/" + this.category)
                     .then(response => {
                         this.products = response.data;
                 });
