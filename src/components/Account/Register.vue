@@ -163,7 +163,7 @@
                 if(pwInput.value != pwConfirm.value) {
                     this.passwordConfirmError = true;
                 } else {
-                    const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
+                    const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
 
                     axios.post(url + "/register", {
                         username: this.email,
