@@ -69,10 +69,7 @@
 </style>
 
 <script>
-    //import axios from 'axios';
-    const axios = require('axios').create({
-        baseUrl: `${process.env.VUE_APP_DOMAIN_NAME_PRODUCT}`
-    });
+    import axios from 'axios';
 
     export default {
         data() {
@@ -81,7 +78,7 @@
             }
         },
         mounted() {
-            axios.get("/subcategory-per-category/" + this.category, {
+            axios.get(process.env.DOMAIN_NAME_PRODUCT + "product/api/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
