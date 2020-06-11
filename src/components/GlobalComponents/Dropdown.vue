@@ -80,7 +80,7 @@
         mounted() {
             const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
-            axios.get(api + "/subcategory-per-category/" + this.category, {
+            axios.get(url + "/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
