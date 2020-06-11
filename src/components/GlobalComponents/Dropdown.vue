@@ -78,7 +78,7 @@
             }
         },
         mounted() {
-            axios.get(process.env.DOMAIN_NAME_PRODUCT + "product/api/subcategory-per-category/" + this.category, {
+            axios.get("product/api/subcategory-per-category/" + this.category, {
                 headers: {
                     'Content-Type' : 'application/json'
                 }
