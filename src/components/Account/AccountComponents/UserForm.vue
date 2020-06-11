@@ -53,7 +53,7 @@ import axios from 'axios';
             getUserInfo() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
 
-                axios.get("/user/" + this.id, {
+                axios.get(url + "/user/" + this.id, {
                     headers: {
                         'Authorization': 'Bearer ' + this.jwt
                     }
