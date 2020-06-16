@@ -63,6 +63,7 @@
         transform: scale(1.05);
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
+        cursor: pointer;
     }
 </style>
 
@@ -129,7 +130,7 @@
                             'Authorization': 'Bearer ' + this.jwt
                         }
                     }).then((response) => {
-                        let id = response.data;
+                        let id = response.data.id;
                         localStorage.removeItem('cart');
                         this.$router.push({path: `/checkout/${id}/complete`});
                     }, (error) => {
@@ -150,7 +151,7 @@
                         savePayment: this.savePayment,
                         jwtPresent: this.jwtPresent
                     }).then((response) => {
-                        let id = response.data;
+                        let id = response.data.id;
                         localStorage.removeItem('cart');
                         this.$router.push({path: `/checkout/${id}/complete`});
                     }, (error) => {

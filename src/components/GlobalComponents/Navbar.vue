@@ -25,7 +25,7 @@
       </span>
 
       <span id="icons">
-        <router-link class="router-link" :to="{name: 'account', params: {id: id}}"> <!-- Get user info and put params here -->
+        <router-link class="router-link" :to="{name: 'account', params: {id: id}}" v-if="jwtExists">
             <svg
                 id="user-svg" 
                 aria-hidden="true" 

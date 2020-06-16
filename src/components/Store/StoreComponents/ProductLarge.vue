@@ -15,7 +15,7 @@
 
                 <div id="right-inner">
                     <div id="product-price">
-                        ${{price}}
+                        ${{price.toFixed(2)}}
                     </div>
                     <router-link class="router-link" :to="{name: 'shopping-cart'}">
                         <button id="add-cart-button" ref="add-cart-button" @click="addToCart()">Add to Cart</button>
@@ -106,6 +106,7 @@
         transform: scale(1.05);
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
+        cursor: pointer;
     }
 </style>
 

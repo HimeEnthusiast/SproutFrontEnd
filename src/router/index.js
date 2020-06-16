@@ -15,6 +15,7 @@ import Checkout from '../components/Store/Checkout'
 import Logout from '../components/Account/Logout'
 import Account from '../components/Account/Account'
 import ThankYou from '../components/Store/ThankYou'
+import Invoice from '../components/Store/Invoice'
 
 const routes = [
   {
@@ -71,11 +72,15 @@ const routes = [
     path: '/user/:id',
     name: 'account',
     component: Account
+  },
+  {
+    path: '/invoice/:id',
+    name: 'invoice',
+    component: Invoice
   }
 ];
 
 const router = new VueRouter({
-  mode: 'history',
   routes
 });
 

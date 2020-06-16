@@ -1,11 +1,15 @@
 <template>
     <div id="root">
-        <h1>Thank you!</h1>
-        <span id="text">Your order is now complete.</span>
+        <div id="left">
+            <h1>Thank you<br>for ordering!</h1>
+        </div>
 
-        <div id="bottom">
-            <span id="total">Total: $0.00</span>
-            <button>View Order</button>
+        <div id="right">
+            <span id="total">Your Total: ${{totalCost}}</span>
+            
+            <router-link class="router-link" :to="{name: 'invoice', params: { id: id }}">
+                <button id="view-order">View Order</button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -16,22 +20,71 @@
     #root {
         font-family: 'Quicksand', sans-serif;
         display: flex;
-        flex-direction: column;
         text-align: center;
+        justify-content: center;
+        padding-top: 7%;
+    }
+
+    #left {
+        margin: auto 70px 0 0;
     }
 
     h1 {
-        font-size: 600%;
+        font-size: 400%;
         color: #00A896;
     }
 
-    #text {
+    #total {
+        padding: 15px;
         font-size: 150%;
+    }
+
+    #right {
+        display: flex;
+        flex-direction: column;
+        margin: auto 0 auto 70px;
+    }
+
+    #view-order {
+        font-size: 150%;
+        font-family: 'Quicksand', sans-serif;
+        padding: 15px 25px 15px 25px;
+        align-self: start;
+        background-color: #00A896;
+        border: none;
+        font-weight: bolder;
+        color: #ffffff;
+        border-radius: 10px;
+        margin: 10px auto 0 auto;
+    }
+
+    #view-order:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 2px #0000007a;
+        transition: 0.3s;
+        cursor: pointer;
     }
 </style>
 
 <script>
-export default {
-    name: "thankyou"
-}
+    import axios from 'axios';
+
+    export default {
+        name: "thankyou",
+        data() {
+            return {
+                totalCost: 0,
+                id: 0
+            }
+        },
+        mounted() {
+            const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+
+            axios.get(url + "/get-invoice/" + this.$route.params.id)
+            .then(response => {
+                this.totalCost = response.data.totalCost.toFixed(2);
+                this.id = this.$route.params.id;
+            });
+        }
+    }
 </script>

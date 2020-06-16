@@ -1,9 +1,14 @@
 <template>
     <div id="root">
+        <div id="empty-cart" v-if="cartEmpty">
+            <div id="empty-line1">Your cart is empty!</div>
+            <br>Add some items to your cart so you can checkout.
+        </div>
+
         <div id="cart-items" v-for="product in products" :key="product.id">
             <ShoppingCartItem :name=product.name :price=product.price @clicked="deleteClick(product.id)"></ShoppingCartItem>
         </div>
-        <div id="bottom-information">
+        <div id="bottom-information" v-if="!cartEmpty">
             <div id="total-cost">
                 <span id="total-title">Total:</span> ${{ totalCost }}
             </div>
@@ -27,6 +32,17 @@
     .router-link {
         text-decoration: none;
         color: #ffffff;
+    }
+
+    #empty-cart {
+        text-align: center;
+        margin-top: 15%;
+        font-size: 300%;
+    }
+
+    #empty-line1 {
+        font-weight: bolder;
+        margin: 5px;
     }
 
     #cart-items {
@@ -86,6 +102,18 @@
         components: {
             ShoppingCartItem
         },
+        data() {
+            return {
+                cart: JSON.parse(localStorage.getItem('cart')),
+                name: "",
+                price: 0.0,
+                quantity: 0,
+                image: "" ,
+                products: [],
+                totalCost: 0.0,
+                cartEmpty: true
+            }
+        },
         methods: {
             loadProduct: function(id) {
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
@@ -101,32 +129,34 @@
                 this.products.splice(index, 1);
                 this.cart.splice(index, 1);
                 localStorage.setItem('cart', JSON.stringify(this.cart));
+            },
+            cartCheck() {
+                if(this.products.length > 0) {
+                    this.cartEmpty = false;
+                }
             }
         },
         watch: {
             products: function() {
-                this.totalCost = 0;
+                this.cartCheck();
 
+                this.totalCost = 0;
                 this.products.forEach(x => {
                     this.totalCost += x.price;
                 });
+
+                if(!this.products.length) {
+                    this.$emit('emptyCart', 1);
+                }
             }
         },
-        mounted() {
+        beforeCreate() {
+            this.cartCheck();
+        },
+        created() {
             this.cart.forEach(x => {
                 this.loadProduct(x);
             });
-        },
-        data() {
-            return {
-                cart: JSON.parse(localStorage.getItem('cart')),
-                name: "",
-                price: 0.0,
-                quantity: 0,
-                image: "" ,
-                products: [],
-                totalCost: 0.0
-            }
         }
     }
 </script>

@@ -4,6 +4,8 @@
             <AddressItem @delete="resetA = resetA + $event" :key="resetA"></AddressItem>
             
             <PaymentItem @delete="resetB = resetB + $event" :key="resetB"></PaymentItem>
+
+            <InvoiceItem></InvoiceItem>
         </div>
 
         <UserForm></UserForm>        
@@ -49,13 +51,15 @@
     import AddressItem from './AccountComponents/AddressItem'
     import PaymentItem from './AccountComponents/PaymentItem'
     import UserForm from './AccountComponents/UserForm'
+    import InvoiceItem from './AccountComponents/InvoiceItem'
 
     export default {
         name: 'Account',
         components: {
             AddressItem,
             PaymentItem,
-            UserForm
+            UserForm,
+            InvoiceItem
         },
         data() {
             return {

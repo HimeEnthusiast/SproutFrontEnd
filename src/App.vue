@@ -5,7 +5,7 @@
         </div>
 
         <div id="container">
-            <router-view></router-view>
+            <router-view :key="reset" @emptyCart="reset = reset + 1"></router-view>
         </div>
     </div>
 </template>
@@ -38,6 +38,11 @@
         name: 'App',
         components: {
             Navbar
+        },
+        data() {
+            return {
+                reset: 0
+            }
         }
     }
 </script>

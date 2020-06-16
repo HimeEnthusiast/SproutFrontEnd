@@ -7,7 +7,7 @@
                 {{name}}
             </div>
             <div id="product-price">
-                ${{price}}
+                ${{price.toFixed(2)}}
             </div>
         </div>
         </router-link>
