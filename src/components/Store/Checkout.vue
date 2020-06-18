@@ -138,6 +138,7 @@
                     });
                 } else {
                     axios.post(url + "/checkout-as-guest", {
+                        email: this.email,
                         products: this.cart,
                         address1: this.address1,
                         address2: this.address2,
