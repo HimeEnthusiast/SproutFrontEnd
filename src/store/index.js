@@ -11,6 +11,9 @@ export default new Vuex.Store({
     },
     productsView: {
       hasSubcategory: false
+    },
+    loadingScreen: {
+      isLoading: false
     }
   },
   getters: {
@@ -22,6 +25,9 @@ export default new Vuex.Store({
     },
     getSubcategory: state => {
       return state.productsView.hasSubcategory;
+    },
+    getLoadingStatus: state => {
+      return state.loadingScreen.isLoading;
     }
   },
   mutations: {
@@ -33,6 +39,9 @@ export default new Vuex.Store({
     },
     setSubcategory(state, hasSubcategory) {
       state.productsView.hasSubcategory = hasSubcategory; 
+    },
+    setLoadingStatus(state, isLoading) {
+      state.loadingScreen.isLoading = isLoading;
     }
   },
   actions: {},

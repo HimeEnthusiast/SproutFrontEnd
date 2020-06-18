@@ -1,5 +1,9 @@
 <template>
     <div id="root">
+        <div id="loader">
+            <img id="loading-icon" src="../../assets/spinner.svg">
+        </div>
+
         <form id="forms" @submit.prevent="sendData()">
             <div id="left">
                 <AddressForm @address1="address1 = $event" 
@@ -33,6 +37,21 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+    }
+
+    #loader {
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: calc(100vh - 100.8px);
+        background: #0000007a;
+        margin-top: -2%;
+        z-index: 100;
+    }
+
+    #loading-icon {
+        position: relative;
+        margin: auto;
     }
 
     #left {
@@ -73,6 +92,7 @@
     import AddressForm from "./StoreComponents/AddressForm";
     import PaymentForm from "./StoreComponents/PaymentForm";
     import GuestEmailForm from "./StoreComponents/GuestEmailForm";
+    // import LoadingScreen from "../GlobalComponents/LoadingScreen";
 
     export default {
         name: "checkout",
@@ -80,6 +100,7 @@
             AddressForm,
             PaymentForm,
             GuestEmailForm
+            // LoadingScreen
         },
         data() {
             return {
@@ -101,14 +122,22 @@
         },
         mounted() {
             alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
+            // this.$store.commit('setLoadingStatus', false);
 
             if(localStorage.getItem('cart')) {
                 this.cart = JSON.parse(localStorage.getItem('cart'));
             }
         },
+        // computed: {
+        //     isLoading() {
+        //         return this.$store.getters.getLoadingStatus;
+        //     }
+        // },
         methods: {
             sendData() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
+                // this.$store.commit('setLoadingStatus', true);
+                document.getElementById("loader").style.display = "flex";
 
                 if(this.jwtPresent) {
                     axios.post(url + "/checkout", {
