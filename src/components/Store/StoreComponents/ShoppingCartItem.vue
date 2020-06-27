@@ -79,6 +79,31 @@
     #trashcan-icon {
         fill: #00A896;
     }
+
+    @media (max-width:500px)  {
+        #root {
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        #product-photo {
+            width: 60px;
+            height: 60px;
+        }
+
+        #name {
+            font-size: 16px;
+            padding: 0;
+        }
+
+        #price {
+            padding: 15px 0 0 0;
+        }
+
+        #delete-icon {
+            width: 20px;
+        }
+    }
 </style>
 
 <script>

@@ -137,6 +137,87 @@
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
     }
+
+    @media (max-width:500px)  {
+        input {
+            margin: 0;
+            padding: 10px;
+            width: calc(100% - 20px);
+        }
+
+        .input-title {
+            margin: 15px 0 3px 5px;
+        }
+
+        .error {
+            font-size: 12px;
+        }
+
+        #root {
+            height: 100%;
+            flex-direction: column;
+        }
+
+        #banner-title {
+            padding: 0;
+            margin-top: 70px;
+            margin-left: 15px;
+            font-size: 30px;
+        }
+
+        #banner-blurb {
+            padding: 0;
+            margin-top: 15px;
+            margin-left: 15px;
+            font-size: 15px;
+            width: 60%;
+        }
+
+        #banner {
+            height: 35%;
+            width: 100%;
+        }
+
+        #sprout-svg {
+            width: 30%;
+            margin: auto 8px -10px auto;
+        }
+
+        #login {
+            width: 80%;
+            margin: 0 auto 0 auto;
+        }
+
+        #login-form {
+            font-size: 17px;
+            width: 100%;
+        }
+
+        #submit-button {
+            width: 100%;
+        }
+
+        #login-svg {
+            width: 30%;
+            display: block;
+            margin: 10% auto 10% auto;
+        }
+
+        /* #login {
+            display: flex;
+            float: right;
+            margin-top: 5%;
+            justify-content: center;
+            width: 70%;
+        }
+
+        #login-form {
+            display: flex;
+            flex-direction: column;
+            color: #00A896;
+            font-size: 20px;
+        } */
+    }
 </style>
 
 <script>

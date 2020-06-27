@@ -1,5 +1,5 @@
 <template>
-    <div id="root">
+    <div id="root-top">
         <div id="left">
             <AddressItem @delete="resetA = resetA + $event" :key="resetA"></AddressItem>
             
@@ -15,7 +15,7 @@
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
 
-    #root {
+    #root-top {
         font-family: 'Quicksand', sans-serif;
         display: flex;
     }
@@ -24,26 +24,17 @@
         width: 50%;
         margin-left: 30px;
     }
+    
+    @media (max-width:500px)  {
+        #root-top {
+            flex-direction: column;
+            margin: 50px 0 10px 15px;
+        }
 
-    #edit-button {
-        width: 50px;
-        height: 50px;
-        border-radius: 7px;
-        border: none;
-    }
-
-    #edit-button {
-        background-color: #00A896;
-    }
-
-    #edit-icon {
-        width: 60%;
-        fill: #ffffff;
-    }
-
-    #edit-button:hover {
-        scale: 1.1;
-        transition: 0.3s;
+        #left {
+            width: 100%;
+            margin: 0;
+        }
     }
 </style>
 

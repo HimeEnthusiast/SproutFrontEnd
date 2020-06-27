@@ -10,36 +10,48 @@
 </template>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-    transition: all 0.9s ease;
-    overflow: hidden;
-    visibility: visible;
-    position: absolute;
-    width:100%;
-    opacity: 1;
-}
+    .fade-enter-active, .fade-leave-active {
+        transition: all 0.9s ease;
+        overflow: hidden;
+        visibility: visible;
+        position: absolute;
+        width:100%;
+        opacity: 1;
+    }
 
-#titles {
-    position: absolute;
-    z-index: 100;
-    bottom: 14%;
-    font-size: 500%;
-    margin-left: 2%;
-    color: #ffffff;
-    filter: drop-shadow(5px 4px 2px #000000);
-    font-weight: bolder;
-}
+    #titles {
+        position: absolute;
+        z-index: 100;
+        bottom: 15%;
+        font-size: 90px;
+        margin-left: 50px;
+        color: #ffffff;
+        filter: drop-shadow(5px 4px 2px #000000);
+        font-weight: bolder;
+    }
 
-.fade-enter, .fade-leave-to {
-    visibility: hidden;
-    width:100%;
-    opacity: 0;
-}
+    .fade-enter, .fade-leave-to {
+        visibility: hidden;
+        width:100%;
+        opacity: 0;
+    }
 
-img {
-    height: 100vh;
-    width: 100%
-}
+    img {
+        height: 100vh;
+        width: 100%;
+    }
+
+    @media (max-width:500px)  {
+        #titles {
+            font-size: 50px;
+            bottom: 2%;
+            margin-left: 10px;
+        }
+
+        img {
+            object-fit: cover;
+        }
+    }
 </style>
 
 <script>

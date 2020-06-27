@@ -40,7 +40,18 @@
         justify-content: center;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
-        height: 300px;
+        /* height: 300px; */
+    }
+
+    @media (max-width:500px)  {
+        #top-bar {
+            padding: 15px;
+            margin-top: 60px;
+        }
+
+        #product-grid {
+            grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+        }
     }
 </style>
 

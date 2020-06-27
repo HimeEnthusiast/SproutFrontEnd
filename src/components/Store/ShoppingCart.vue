@@ -1,5 +1,5 @@
 <template>
-    <div id="root">
+    <div id="root-top">
         <div id="empty-cart" v-if="cartEmpty">
             <div id="empty-line1">Your cart is empty!</div>
             <br>Add some items to your cart so you can checkout.
@@ -24,7 +24,7 @@
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
 
-    #root {
+    #root-top {
         font-family: 'Quicksand', sans-serif;
         color: #00A896;
     }
@@ -90,6 +90,38 @@
         transform: scale(1.05);
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
+    }
+
+    @media (max-width:500px)  {
+        #root-top {
+            margin-top: 85px;
+        }
+
+        #bottom-information {
+            flex-direction: column;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #total-cost {
+            margin: 10px 25px  0 auto;
+            font-size: 35px;
+        }
+
+        #total-title {
+            /* margin-right: auto; */
+            font-weight: bolder;
+        }
+
+        #checkout {
+            margin: auto;
+        }
+
+        #checkout-button {
+            margin-top: 15px;
+            width: 90vw;
+            padding: 8px;
+        }
     }
 </style>
 

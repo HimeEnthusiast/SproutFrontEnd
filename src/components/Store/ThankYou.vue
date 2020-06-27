@@ -64,6 +64,42 @@
         transition: 0.3s;
         cursor: pointer;
     }
+
+    @media (max-width:500px)  {
+        #root {
+            /* font-family: 'Quicksand', sans-serif; */
+            /* display: flex; */
+            /* text-align: center; */
+            /* justify-content: center; */
+            /* padding-top: 7%; */
+            flex-direction: column;
+        }
+
+        #left {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 63px;
+            color: #00A896;
+        }
+
+        #total {
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        #right {
+            position: absolute;
+            margin: 18px;
+            bottom: 0;
+        }
+
+        #view-order {
+            width: 90vw;
+            bottom: 0;
+        }
+    }
 </style>
 
 <script>

@@ -14,7 +14,7 @@
     </div>
 
     <div id="bottom-container">
-      <!-- TODO: Seeds, Pots, Tools, Soil // Account -->
+
     <router-link :to="{name: 'home'}"><img src="../../assets/logoaltcolour.svg"></router-link>
 
       <span id="categories">

@@ -104,6 +104,47 @@
         font-size: 200%;
         margin-left: auto;
     }
+
+    @media (max-width:500px)  {
+        #root {
+            margin: 15px;
+            margin-top: 70px;
+        }
+
+        #order-num {
+            font-size: 33px;
+        }
+
+        #order-datetime {
+            margin-top: 10px;
+        }
+
+        #address {
+            margin: 40px auto 20px auto;
+        }
+
+        .address-line {
+            padding: 3px;
+        }
+
+        #products {
+            padding-top: 10px;
+        }
+
+        #product-item {
+            padding: 13px;
+        }
+
+        #bottom {
+            display: flex;
+            padding: 20px 40px 0 40px;
+            font-weight: bold;
+        }
+
+        #total-cost {
+            font-weight: normal;
+        }
+    }
 </style>
 
 <script>

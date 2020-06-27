@@ -84,6 +84,51 @@
         transition: 0.3s;
         cursor: pointer;
     }
+
+    @media (max-width:500px)  {
+        #root {
+            margin-top: 40px;
+        }
+
+        #forms {
+            flex-direction: column;
+        }
+
+        #left {
+            width: 100%;
+            margin-left: 0;
+        }
+
+        #right {
+            width: 100%;
+            margin-top: -20px;
+        }
+
+        #order-button {
+            position: initial;
+            font-size: 25px;
+            padding: 15px;
+            width: 85vw;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        #loader {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #0000007a;
+            margin-top: 19px;
+            z-index: 100;
+        }
+
+        #loading-icon {
+            position: relative;
+            margin: auto;
+            margin-top: 50%;
+            display: block;
+        }
+    }
 </style>
 
 <script>
@@ -121,7 +166,7 @@
             }
         },
         mounted() {
-            alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
+            // alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
             // this.$store.commit('setLoadingStatus', false);
 
             if(localStorage.getItem('cart')) {

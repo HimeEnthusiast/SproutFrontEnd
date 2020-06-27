@@ -1,6 +1,6 @@
 <template>
     <div id="container">
-        <Slideshow></Slideshow>
+        <Slideshow id="slideshow"></Slideshow>
     </div>
 </template>
 
@@ -13,6 +13,12 @@
         height: 100%;
         width: 100%;
         z-index: -1;
+    }
+
+    @media (max-width:500px)  {
+        #slideshow {
+            /* width: 90%; */
+        }
     }
 </style>
 

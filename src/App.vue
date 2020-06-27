@@ -4,6 +4,10 @@
             <Navbar :key="$route.fullPath"></Navbar>
         </div>
 
+        <div id="mobile-nav">
+            <MobileNavbar :key="$route.fullPath"></MobileNavbar>
+        </div>
+
         <div id="container">
             <router-view :key="reset" @emptyCart="reset = reset + 1"></router-view>
         </div>
@@ -28,16 +32,37 @@
 
      #container {
         position: relative;
+        width: 100%;
      }
+
+     #mobile-nav {
+         display: none;
+     }
+
+    @media (max-width:500px)  {
+        #nav {
+            display: none;
+        }
+
+        #mobile-nav {
+            display: initial;
+        }
+
+        #container {
+            height: 100%;
+        }
+    }
 </style>
 
 <script>
-    import Navbar from './components/GlobalComponents/Navbar'
+    import Navbar from './components/GlobalComponents/Navbar';
+    import MobileNavbar from './components/GlobalComponents/MobileNav'
 
     export default {
         name: 'App',
         components: {
-            Navbar
+            Navbar,
+            MobileNavbar
         },
         data() {
             return {

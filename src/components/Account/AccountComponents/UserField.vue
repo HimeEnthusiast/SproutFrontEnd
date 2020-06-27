@@ -135,6 +135,34 @@
         scale: 1.1;
         transition: 0.3s;
     }
+
+    @media (max-width:500px)  {
+        #title {
+            font-size: 15px;
+        }
+
+        #field, .editable-field {
+            margin-right: 13px;
+            padding: 12px;
+            width: 220px;
+            font-size: 14px;
+        }
+
+        #email-error {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        #edit-button, #confirm-button, #cancel-button {
+            width: 40px;
+            height: 40px;
+            margin-right: 13px;
+        }
+
+        #edit-icon, #confirm-icon, #cancel-icon {
+            width: 65%;
+        }
+    }
 </style>
 
 <script>

@@ -47,6 +47,22 @@
         text-decoration: none;
         color: #00A896;
     }
+
+    @media (max-width:500px)  {
+        #root {
+            padding: 10px;
+        }
+
+        #product-photo {
+            width: 60%;
+            height: 60%;
+        }
+
+        #product-name, #product-price {
+            font-size: 13px;
+            width: 120px;
+        }
+    }
 </style>
 
 <style scoped>

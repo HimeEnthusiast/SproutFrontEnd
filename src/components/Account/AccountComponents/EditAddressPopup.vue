@@ -149,6 +149,28 @@
         scale: 1.1;
         transition: 0.3s;
     }
+
+    @media (max-width:500px)  {
+        #popup {
+            position: absolute;
+            width: calc(100% - 20px);
+            height: 100%;
+            padding: 10px;
+            border-radius: 0;
+            top: 0px;
+            box-shadow: none;
+        }
+
+        #editable-lines {
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            margin-bottom: 13px;
+            padding: 10px;
+            width: 40vh;
+        }
+    }
 </style>
 
 <script>

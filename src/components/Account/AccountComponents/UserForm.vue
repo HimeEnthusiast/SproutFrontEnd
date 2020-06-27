@@ -16,6 +16,12 @@
         display: flex;
         flex-direction: column;
     }
+
+    @media (max-width:500px)  {
+        h1 {
+            font-size: 30px;
+        }
+    }
 </style>
 
 <script>

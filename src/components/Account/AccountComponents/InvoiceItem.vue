@@ -14,8 +14,6 @@
 </template>
 
 <style scoped>
-
-
     #root {
         display: flex;
         flex-direction: column;
@@ -67,6 +65,40 @@
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
         cursor: pointer;
+    }
+
+    @media (max-width:500px)  {
+        #product-info {
+            width: 90%;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        #title {
+            margin-bottom: 20px;
+            font-size: 30px;
+        }
+
+        #datetime {
+            font-size: 12px;
+            width: 70px;
+        }
+
+        #price {
+            font-size: 14px;
+        }
+
+        #quantity {
+            font-size: 14px;
+        }
+
+        #view-order {
+            padding: 7px;
+            font-size: 15px;
+            width: 70px;
+        }
     }
 </style>
 

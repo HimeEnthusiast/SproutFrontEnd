@@ -146,6 +146,51 @@
         scale: 1.1;
         transition: 0.3s;
     }
+
+    @media (max-width:500px)  {
+        #title {
+            font-size: 30px;
+        }
+
+        #add-title-button {
+            width: 0px;
+            padding: 0;
+        }
+
+        #add-title {
+            font-size: 14px;
+        }
+
+        #card-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 250px));
+        }
+
+        #card {
+            width: 200px;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .line {
+            margin-bottom: 4px;
+        }
+
+        #edit-button, #delete-button {
+            width: 40px;
+            height: 40px;
+        }
+
+        #edit-button {
+            margin-bottom: 10px;
+        }
+
+        #edit-icon, #delete-icon {
+            width: 70%;
+        }
+    }
 </style>
 
 <script>
@@ -192,9 +237,19 @@
                 this.cardBearer = cardBearer;
                 this.cardNumber = cardNumber;
                 this.cvv = cvv;
+
+                // Get the current page scroll position 
+                let scrollTop =  window.pageYOffset || document.documentElement.scrollTop; 
+                let scrollLeft =  window.pageXOffset || document.documentElement.scrollLeft; 
+
+                window.onscroll = function() { 
+                    window.scrollTo(scrollLeft, scrollTop); 
+                }; 
             },
             closeWindow() {
                 document.getElementById("payment-popup").style.display = "none";
+
+                window.onscroll = function() {};
             },
             getPayments() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
