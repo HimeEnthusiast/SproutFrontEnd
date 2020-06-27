@@ -137,6 +137,10 @@
     }
 
     @media (max-width:500px)  {
+        button {
+            outline: none;
+        }
+        
         input {
             margin: 0;
             padding: 10px;
@@ -234,6 +238,8 @@
                         console.log(response.data);
                         this.$router.push("/login");
                     }, (error) => {
+                        console.error(error);
+
                         if(error.response.status == 409) {
                             this.emailError = true;
                         };

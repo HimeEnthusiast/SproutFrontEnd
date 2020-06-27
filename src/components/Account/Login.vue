@@ -139,6 +139,10 @@
     }
 
     @media (max-width:500px)  {
+        button {
+            outline: none;
+        }
+
         input {
             margin: 0;
             padding: 10px;

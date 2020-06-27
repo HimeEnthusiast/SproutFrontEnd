@@ -116,7 +116,7 @@
         /* top: 0; */
         margin-top: 60px;
         padding-top: 20px;
-        z-index: 1;
+        z-index: 99;
     }
 
     #categories {
