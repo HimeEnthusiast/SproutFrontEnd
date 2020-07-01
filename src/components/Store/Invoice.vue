@@ -105,7 +105,7 @@
         margin-left: auto;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #root {
             margin: 15px;
             margin-top: 70px;

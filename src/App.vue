@@ -39,7 +39,7 @@
          display: none;
      }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #nav {
             display: none;
         }

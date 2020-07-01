@@ -24,8 +24,20 @@
         width: 50%;
         margin-left: 30px;
     }
+
+    @media (max-width:950px)  {
+        #root-top {
+            flex-direction: column;
+            margin: 0 0 10px 15px;
+        }
+
+        #left {
+            width: 100%;
+            margin: 0;
+        }
+    }
     
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #root-top {
             flex-direction: column;
             margin: 50px 0 10px 15px;

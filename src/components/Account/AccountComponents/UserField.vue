@@ -81,7 +81,7 @@
     #field, .editable-field {
         margin-right: 25px;
         padding: 15px;
-        width: 40vh;
+        width: 100%;
         border-radius: 5px;
         font-family: 'Raleway', sans-serif;
         border: 1px solid rgb(206, 206, 206);
@@ -103,8 +103,10 @@
     }
 
     #edit-button, #confirm-button, #cancel-button {
-        width: 50px;
-        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        max-width: 50px;
+        max-height: 50px;
         border-radius: 7px;
         border: none;
         background-color: #00A896;
@@ -144,7 +146,7 @@
         #field, .editable-field {
             margin-right: 13px;
             padding: 12px;
-            width: 220px;
+            width: 100%;
             font-size: 14px;
         }
 

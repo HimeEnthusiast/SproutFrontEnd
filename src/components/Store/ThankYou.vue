@@ -65,13 +65,8 @@
         cursor: pointer;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #root {
-            /* font-family: 'Quicksand', sans-serif; */
-            /* display: flex; */
-            /* text-align: center; */
-            /* justify-content: center; */
-            /* padding-top: 7%; */
             flex-direction: column;
         }
 

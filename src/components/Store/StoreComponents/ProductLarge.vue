@@ -42,6 +42,7 @@
     #bottom {
         display: flex;
         flex-direction: row;
+        padding: 30px;
     }
 
     #product-photo {
@@ -77,12 +78,12 @@
     }
 
     #product-name {
-        font-size: 400%;
+        font-size: 5vw;
         font-weight: bolder;
     }
 
     #product-desc {
-        font-size: 150%;
+        font-size: 2.5vw;
     }
 
     #product-price {
@@ -90,7 +91,8 @@
     }
 
     #add-cart-button {
-        font-size: 200%;
+        font-size: 30px;
+        min-width: 250px;
         font-family: 'Quicksand', sans-serif;
         padding: 15px 25px 15px 25px;
         align-self: start;
@@ -109,14 +111,37 @@
         cursor: pointer;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:950px)  {
+        #bottom {
+            flex-direction: column;
+        }
+
+        #product-photo {
+            width: 85%;
+            margin: 0 auto 0 auto;
+        }
+
+        #product-desc {
+            margin-top: 10px;
+        }
+
+        #right-inner {
+            flex-direction: row;
+            position: inherit;
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        #product-price {
+            margin-right: 30px;
+        }
+    }
+
+    @media (max-width:600px)  {
         #right {
-            /* display: flex; */
             position: initial;
             flex-direction: column;
-            /* justify-content: center; */
             width: 100%;
-            /* margin: autp; */
         }
 
         #top-bar {
@@ -126,9 +151,7 @@
 
         #bottom {
             flex-direction: column;
-            /* justify-content: center; */
             padding: 15px;
-            /* margin: auto; */
         }
 
         #product-photo {
@@ -138,12 +161,11 @@
 
         #product-name {
             font-size: 30px;
-            /* width: 80vw; */
             margin-bottom: 10px;
         }
 
         #product-desc {
-            /* width: 80vw; */
+            font-size: 20px;
         }
 
         #right-inner {
@@ -156,6 +178,7 @@
             font-size: 20px;
             padding: 15px;
             width: 150px;
+            min-width: 200px;
         }
 
         #product-price {
@@ -179,7 +202,7 @@
                 price: 0.0,
                 category: "",
                 subcategory: "",
-                image: "https://www.thespruceeats.com/thmb/YyyMF4DhOpY8Vx750FPBvxBDLIc=/4288x2848/filters:fill(auto,1)/sauteed-broccoli-482862-Hero-5b96d87146e0fb0050721d12.jpg",
+                image: "",
                 cart: [],
                 addCartButton: ""
             }
@@ -196,6 +219,7 @@
                 this.price = response.data.price;
                 this.category = response.data.category;
                 this.subcategory = response.data.subcategory;
+                this.image = response.data.image;
 
             }, (error) => {
                 console.log(error);

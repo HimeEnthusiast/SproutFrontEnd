@@ -71,7 +71,7 @@
     #add-title-button {
         border: none;
         background-color: #00A896;
-        width: 20%;
+        width: 150px;
         min-width: 140px;
         margin: 10px 0 20px 0;
         border-radius: 10px;
@@ -89,7 +89,7 @@
     }
 
     #card-grid {
-        width: 100%;
+        width: 100vw;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
     }
@@ -145,6 +145,12 @@
         cursor: pointer;
         scale: 1.1;
         transition: 0.3s;
+    }
+
+    @media (max-width:690px)  {
+        #card-grid {
+            width: 100%;
+        }
     }
 
     @media (max-width:500px)  {

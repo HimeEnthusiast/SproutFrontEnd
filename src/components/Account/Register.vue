@@ -120,7 +120,7 @@
     #submit-button {
         padding: 10px;
         align-self: center;
-        width: 12vw;
+        width: 20vw;
         font-size: 20px;
         background-color: #00A896;
         border: none;
@@ -136,7 +136,7 @@
         transition: 0.3s;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         button {
             outline: none;
         }
@@ -176,12 +176,14 @@
         }
 
         #banner {
-            height: 35%;
+            height: 200px;
             width: 100%;
         }
 
         #sprout-svg {
-            width: 30%;
+            max-width: 120px;
+            min-width: 100;
+            width: 20%;
             margin: auto 8px -10px auto;
         }
 
@@ -197,6 +199,7 @@
 
         #submit-button {
             width: 100%;
+            margin-top: 30px;
         }
     }
 </style>

@@ -1,42 +1,64 @@
 <template>
-    <div id="root">
+    <div id="root-top">
         <div id="loader">
             <img id="loading-icon" src="../../assets/spinner.svg">
         </div>
 
-        <form id="forms" @submit.prevent="sendData()">
-            <div id="left">
-                <AddressForm @address1="address1 = $event" 
-                            @address2="address2 = $event"
-                            @city="city = $event"
-                            @province="province = $event"
-                            @postalcode="postalcode = $event"
-                            @saveAddress="saveAddress = $event"></AddressForm>
+        <div id="container">
+            <div id="title">
+                <h1>Checkout</h1>
             </div>
 
-            <div id="right">
-                <PaymentForm @cardBearer="cardBearer = $event"
-                            @ccNumber="ccNumber = $event"
-                            @cvv="cvv = $event"
-                            @savePayment="savePayment = $event">
-                </PaymentForm>
+            <form id="forms" @submit.prevent="sendData()">
+                <div id="left">
+                    <AddressForm @address1="address1 = $event" 
+                                @address2="address2 = $event"
+                                @city="city = $event"
+                                @province="province = $event"
+                                @postalcode="postalcode = $event"
+                                @saveAddress="saveAddress = $event"></AddressForm>
+                </div>
 
-                <GuestEmailForm v-if="!jwtPresent"
-                            @email="email = $event">
-                </GuestEmailForm>
+                <div id="right">
+                    <PaymentForm @cardBearer="cardBearer = $event"
+                                @ccNumber="ccNumber = $event"
+                                @cvv="cvv = $event"
+                                @savePayment="savePayment = $event">
+                    </PaymentForm>
 
-                <input type="submit" id="order-button" value="Complete Order" />
-            </div>
-        </form>
+                    <GuestEmailForm v-if="!jwtPresent"
+                                @email="email = $event">
+                    </GuestEmailForm>
+
+                    <div id="submit-container">
+                        <input type="submit" id="order-button" value="Complete Order" />
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </template>
 
 <style scoped>
+    @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
+
+    #root-top {
+        display: flex;
+        justify-content: center;
+        font-family: 'Quicksand', sans-serif;
+    }
+
+    #container {
+        width: 90%;
+        padding-top: 15px;
+    }
+
     #forms {
-        margin-top: 2%;
         display: flex;
         flex-direction: row;
         justify-content: center;
+        width: 90%;
+        margin: 0;
     }
 
     #loader {
@@ -55,27 +77,28 @@
     }
 
     #left {
-        width: 40%;
-        margin-left: auto;
+        width: 49%;
     }
 
     #right {
-        width: 40%;
-        position: relative;
+        width: 49%;
+    }
+
+    #submit-container {
+        display: flex;
+        justify-content: center;
     }
 
     #order-button {
-        position: absolute;
-        font-size: 200%;
+        font-size: 2vw;
         font-family: 'Quicksand', sans-serif;
-        padding: 15px 25px 15px 25px;
+        padding: 2vh 2vw 2vh 2vw;
         background-color: #00A896;
         border: none;
         font-weight: bolder;
         color: #ffffff;
         border-radius: 10px;
         bottom: 0;
-        margin-left: 20px;
     }
 
     #order-button:hover {
@@ -85,8 +108,8 @@
         cursor: pointer;
     }
 
-    @media (max-width:500px)  {
-        #root {
+    @media (max-width:690px)  {
+        #root-top {
             margin-top: 40px;
         }
 
@@ -108,9 +131,9 @@
             position: initial;
             font-size: 25px;
             padding: 15px;
-            width: 85vw;
+            width: 65vw;
             margin-top: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 35px;
         }
 
         #loader {
@@ -166,7 +189,7 @@
             }
         },
         mounted() {
-            // alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
+            alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
             // this.$store.commit('setLoadingStatus', false);
 
             if(localStorage.getItem('cart')) {

@@ -72,7 +72,7 @@
     #add-title-button {
         border: none;
         background-color: #00A896;
-        width: 20%;
+        width: 150px;
         min-width: 140px;
         margin: 10px 0 20px 0;
         border-radius: 10px;

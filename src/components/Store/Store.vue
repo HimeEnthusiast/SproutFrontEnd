@@ -7,7 +7,7 @@
         <div id="bottom">
             <div id="product-grid">
                 <span v-for="product in products" :key="product.id">
-                    <ProductSmall image="url" :id="product.id" :name="product.name" :description="product.description" :price="product.price"></ProductSmall>
+                    <ProductSmall :image="product.image" :id="product.id" :name="product.name" :description="product.description" :price="product.price"></ProductSmall>
 
                 </span>
             </div>
@@ -40,10 +40,9 @@
         justify-content: center;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
-        /* height: 300px; */
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #top-bar {
             padding: 15px;
             margin-top: 60px;

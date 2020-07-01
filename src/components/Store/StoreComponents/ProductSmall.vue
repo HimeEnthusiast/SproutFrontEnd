@@ -2,7 +2,7 @@
     <div id="root">
         <router-link class="router-link" :to="{name: 'products-item', params: {id: id, name: name.replace(/\s+/g, '-').toLowerCase()}}">
         <div id="product">
-            <img id="product-photo" v-bind:src="image" />
+            <img id="product-photo" :src="image" />
             <div id="product-name">
                 {{name}}
             </div>
@@ -15,6 +15,10 @@
 </template>
 
 <style scoped>
+    #root {
+        padding: 10px;
+    }
+
     #product {
         width: 13%;
         min-width: 200px;
@@ -48,7 +52,7 @@
         color: #00A896;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #root {
             padding: 10px;
         }

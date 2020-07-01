@@ -6,11 +6,11 @@
         </div>
 
         <div id="cart-items" v-for="product in products" :key="product.id">
-            <ShoppingCartItem :name=product.name :price=product.price @clicked="deleteClick(product.id)"></ShoppingCartItem>
+            <ShoppingCartItem :image="product.image" :name="product.name" :price="product.price" @clicked="deleteClick(product.id)"></ShoppingCartItem>
         </div>
         <div id="bottom-information" v-if="!cartEmpty">
             <div id="total-cost">
-                <span id="total-title">Total:</span> ${{ totalCost }}
+                <span id="total-title">Total:</span> ${{totalCost.toFixed(2)}}
             </div>
             <div id=checkout>
                 <router-link class="router-link" :to="{name: 'checkout'}">
@@ -92,7 +92,7 @@
         transition: 0.3s;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #root-top {
             margin-top: 85px;
         }

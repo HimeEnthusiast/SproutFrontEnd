@@ -1,9 +1,9 @@
 <template>
     <div id="root">
-        <img id="product-photo" v-bind:src="image" />
+        <img id="product-photo" :src="image" />
         <div id="product-info">
             <span id="name">{{name}}</span>
-            <span id="price">${{price}}</span>
+            <span id="price">${{price.toFixed(2)}}</span>
         </div>
         <div id="delete-icon" @click="deleteClick">
             <svg aria-hidden="true" 
@@ -33,7 +33,7 @@
         display: flex;
         width: 80%;
         flex-direction: row;
-        padding: 2%;
+        padding: 20px;
         border-radius: 10px;
         margin: 1%;
     }
@@ -60,12 +60,13 @@
     }
 
     #product-photo {
-        width: 10%;
+        width: 100px;
         border-radius: 10px;
     }
 
     #delete-icon {
         width: 3%;
+        min-width: 30px;
         margin-left: auto;
         display: flex;
         align-items: center;
@@ -80,7 +81,7 @@
         fill: #00A896;
     }
 
-    @media (max-width:500px)  {
+    @media (max-width:690px)  {
         #root {
             padding: 15px;
             margin-bottom: 20px;
@@ -101,7 +102,7 @@
         }
 
         #delete-icon {
-            width: 20px;
+            min-width: 20px;
         }
     }
 </style>

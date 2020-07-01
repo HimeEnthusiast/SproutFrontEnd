@@ -15,6 +15,7 @@
     #root {
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
 
     @media (max-width:500px)  {

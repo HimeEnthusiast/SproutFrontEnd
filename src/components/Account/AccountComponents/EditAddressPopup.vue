@@ -93,9 +93,9 @@
     }
 
     #background {
-        position: absolute;
+        position: fixed;
         background-color: #000000;
-        height: 100%;
+        min-height: 100vh;
         width: 100%;
         left: 0;
         opacity: 50%;
