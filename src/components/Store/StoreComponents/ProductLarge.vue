@@ -9,17 +9,17 @@
                 <div id="product-name">
                     {{name}}
                 </div>
-                <div id="product-desc">
-                    {{description}}
+                <div id="product-price">
+                        ${{price.toFixed(2)}}
                 </div>
 
                 <div id="right-inner">
-                    <div id="product-price">
-                        ${{price.toFixed(2)}}
-                    </div>
                     <router-link class="router-link" :to="{name: 'shopping-cart'}">
                         <button id="add-cart-button" ref="add-cart-button" @click="addToCart()">Add to Cart</button>
                     </router-link>
+                    <div id="product-desc">
+                        {{description}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,6 +32,7 @@
     #root {
         font-family: 'Quicksand', sans-serif;
         color: #00A896;
+        min-height: calc(100vh - 92px);
     }
 
     .router-link {
@@ -43,13 +44,17 @@
         display: flex;
         flex-direction: row;
         padding: 30px;
+        justify-content: center;
     }
 
     #product-photo {
-        width: 45%;
+        width: 30vw;
+        height: 60vh;
+        min-width: 400px;
         margin: 2%;
         border-radius: 10px;
         box-shadow: 0 3px 5px #0000007a;
+        object-fit: cover;
     }
 
     #top-bar {
@@ -65,34 +70,36 @@
         position: relative;
         flex-direction: column;
         justify-content: left;
-        width: 47%;
+        width: 40%;
         margin: 2%;
     }
 
     #right-inner {
-        display: flex;
-        flex-direction: column;
         position: absolute;
         bottom: 0;
         width: 100%;
     }
 
     #product-name {
-        font-size: 5vw;
+        font-size: 35px;
         font-weight: bolder;
+        color: #000000;
     }
 
     #product-desc {
-        font-size: 2.5vw;
+        font-size: 20px;
+        color: #000000;
+        width: 80%;
+        padding-top: 40px;
     }
 
     #product-price {
-        font-size: 350%;
+        font-size: 25px;
     }
 
     #add-cart-button {
-        font-size: 30px;
-        min-width: 250px;
+        font-size: 20px;
+        width: 80%;
         font-family: 'Quicksand', sans-serif;
         padding: 15px 25px 15px 25px;
         align-self: start;
@@ -100,8 +107,8 @@
         border: none;
         font-weight: bolder;
         color: #ffffff;
-        border-radius: 10px;
-        margin-top: 3%;
+        border-radius: 5px;
+        /* margin-top: 50px; */
     }
 
     #add-cart-button:hover {
@@ -114,15 +121,27 @@
     @media (max-width:950px)  {
         #bottom {
             flex-direction: column;
+            /* margin: 0 auto 0 auto; */
+            justify-content: center;
+            /* justify-items: center; */
+            padding-bottom: 100px;
+            /* width: 100vw; */
         }
 
         #product-photo {
-            width: 85%;
+            /* width: 85%; */
+            width: 80vw;
+            height: 50vh;
             margin: 0 auto 0 auto;
         }
 
         #product-desc {
             margin-top: 10px;
+            width: 100%;
+        }
+
+        #right {
+            width: 100%;
         }
 
         #right-inner {
@@ -135,6 +154,10 @@
         #product-price {
             margin-right: 30px;
         }
+
+        #add-cart-button {
+            width: 100%;
+        }
     }
 
     @media (max-width:600px)  {
@@ -142,21 +165,23 @@
             position: initial;
             flex-direction: column;
             width: 100%;
+            margin: 0;
         }
 
         #top-bar {
-            margin-top: 60px;
             padding: 15px;
         }
 
         #bottom {
             flex-direction: column;
-            padding: 15px;
+            padding: 20px;
+            padding-bottom: 80px;
         }
 
         #product-photo {
-            width: 100%;
-            margin: 10px auto 30px auto;
+            height: 40vh;
+            margin: 10px auto 25px auto;
+            min-width: 300px;
         }
 
         #product-name {
@@ -166,24 +191,26 @@
 
         #product-desc {
             font-size: 20px;
+            width: 100%;
+            padding-top: 30px;
         }
 
         #right-inner {
             position: initial;
             flex-direction: row;
-            margin: 40px auto auto 8px;
+            /* margin: 40px auto auto 8px; */
         }
 
         #add-cart-button {
             font-size: 20px;
             padding: 15px;
-            width: 150px;
+            width: 100%;
             min-width: 200px;
         }
 
         #product-price {
-            font-size: 30px;
-            padding: 10px;
+            font-size: 20px;
+            /* padding: 10px; */
             margin-right: 15px;
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div id="root">
+    <div id="root-top">
         <div id="top-bar">
             Store / {{ formatUpper(category) }} <span v-if="subcategory">/ {{ formatUpper(subcategory) }}</span>
         </div>
@@ -18,8 +18,9 @@
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
 
-    #root {
+    #root-top {
         font-family: 'Quicksand', sans-serif;
+        min-height: calc(100vh - 60px);
     }
 
     #bottom {
@@ -28,7 +29,7 @@
 
     #top-bar {
         background-color: #F2F2F2;
-        padding: 30px;
+        padding: 40px 30px 30px 30px;
         width: 100%;
         position: relative;
         z-index: -100;
@@ -40,22 +41,26 @@
         justify-content: center;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 250px));
+        gap: 20px;
+        padding-bottom: 80px;
     }
 
     @media (max-width:690px)  {
         #top-bar {
             padding: 15px;
-            margin-top: 60px;
+            margin-top: 0px;
         }
 
         #product-grid {
             grid-template-columns: repeat(auto-fill, minmax(100px, 150px));
+            padding-bottom: 60px;
+            gap: 20px;
         }
     }
 </style>
 
 <script>
-    import ProductSmall from '../Store/StoreComponents/ProductSmall';
+    import ProductSmall from '../Store/StoreComponents/ProductSmallHome';
     import axios from 'axios';
 
     export default {

@@ -23,22 +23,23 @@
 
     #product {
         color: #000000;
-        position: relative;
+        /* position: relative; */
     }
 
     #product-info {
-        position: absolute;
-        top: 0;
+        /* position: absolute; */
+        /* top: 0; */
         background-color: #ffffff7a;
         width: 100%;
         height: 50px;
-        padding: 10px;
+        padding: 10px 0 10px 0;
     }
 
     #product-photo {
         width: 100%;
-        height: 300px;
+        height: 250px;
         object-fit: cover;
+        border-radius: 5px;
     }
 
     #product-name {
@@ -47,11 +48,10 @@
     }
 
     #product-desc {
-        padding: 0 0 2px 5px;
+        /* padding: 0 0 2px 5px; */
     }
 
     #product-price {
-        padding-left: 5px;
         font-size: 120%;
     }
 
@@ -66,17 +66,22 @@
         }
 
         #product-info {
-            height: 30px;
+            /* height: 30px; */
         }
 
         #product-photo {
             width: 100%;
-            height: 210px;
+            height: 150px;
+            border-radius: 5px;
+        }
+
+        #product-info {
+            padding: 5px 0 0 0;
         }
 
         #product-name, #product-price {
             font-size: 13px;
-            /* width: 110px; */
+            padding: 0;
         }
     }
 </style>

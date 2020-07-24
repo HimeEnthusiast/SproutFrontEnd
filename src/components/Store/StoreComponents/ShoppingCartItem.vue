@@ -1,9 +1,14 @@
 <template>
-    <div id="root">
+    <div id="root-cart">
         <img id="product-photo" :src="image" />
         <div id="product-info">
             <span id="name">{{name}}</span>
             <span id="price">${{price.toFixed(2)}}</span>
+            <div id="quantity">
+                <button class="quan-btn" id="plus">+</button>
+                <span id="num">0</span>
+                <button class="quan-btn" id="minus">-</button>
+            </div>
         </div>
         <div id="delete-icon" @click="deleteClick">
             <svg aria-hidden="true" 
@@ -20,22 +25,20 @@
                         </path>
             </svg>
         </div>
+        <!-- <hr> -->
     </div>
 </template>
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
 
-    #root {
+    #root-cart {
         font-family: 'Quicksand', sans-serif;
         color: #00A896;
-        box-shadow: 0 3px 5px #0000007a;
         display: flex;
-        width: 80%;
         flex-direction: row;
         padding: 20px;
         border-radius: 10px;
-        margin: 1%;
     }
 
     #product-info {
@@ -45,22 +48,47 @@
         width: 50%;
     }
 
-    #name, #price {
+    #name, #price, #quantity {
         padding: 5px;
     }
 
     #name {
         top: 0;
         font-size: 170%;
+        font-weight: bolder;
+        color: #000000;
+        /* padding-bottom: 0; */
     }
 
     #price {
-        bottom: 0;
         font-size: 120%;
+        color: #000000;
+        padding-top: 0;
+    }
+
+    #quantity {
+        border: 1px solid #00A896;
+        width: 90px;
+        padding: 0;
+        margin-top: auto;
+    }
+
+    #num {
+        padding: 10px;
+        color: #000000;
+    }
+
+    .quan-btn {
+        border: none;
+        width: 30px;
+        padding: 5px;
+        background-color: #00A896;
+        color: #ffffff;
     }
 
     #product-photo {
-        width: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 10px;
     }
 
@@ -79,17 +107,18 @@
 
     #trashcan-icon {
         fill: #00A896;
+        max-width: 35px;
     }
 
     @media (max-width:690px)  {
         #root {
-            padding: 15px;
+            /* padding: 15px; */
             margin-bottom: 20px;
         }
 
         #product-photo {
-            width: 60px;
-            height: 60px;
+            width: 90px;
+            height: 90px;
         }
 
         #name {
@@ -98,7 +127,8 @@
         }
 
         #price {
-            padding: 15px 0 0 0;
+            padding: 0;
+            font-size: 14px;
         }
 
         #delete-icon {

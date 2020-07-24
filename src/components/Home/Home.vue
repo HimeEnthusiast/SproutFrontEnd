@@ -4,19 +4,27 @@
 
         <div id="categories">
             <span class="category-title">
-                Seeds
+                <router-link class="router-link" :to="{name: 'products-category', params: {category: 'seeds'}}" @click="subcategoryExists(false)">
+                    Seeds
+                </router-link>
             </span>
 
             <span class="category-title">
-                Planters
+                <router-link class="router-link" :to="{name: 'products-category', params: {category: 'planters'}}" @click="subcategoryExists(false)">
+                    Planters
+                </router-link>
             </span>
 
             <span class="category-title">
-                Tools
+                <router-link class="router-link" :to="{name: 'products-category', params: {category: 'tools'}}" @click="subcategoryExists(false)">
+                    Tools
+                </router-link>
             </span>
 
             <span class="category-title">
-                Soil
+                <router-link class="router-link" :to="{name: 'products-category', params: {category: 'soil'}}" @click="subcategoryExists(false)">
+                    Soil
+                </router-link>
             </span>
         </div>
 
@@ -44,6 +52,7 @@
 
     h1 {
         margin-left: 10px;
+        padding-left: 10px;
     }
 
     #categories {
@@ -51,8 +60,7 @@
     }
 
     #features {
-        width: 100%;
-        margin: 0 auto 0 auto;
+        padding-bottom: 40px;
     }
 
     #product-grid {
@@ -60,10 +68,12 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-template-rows: 300px;
+        gap: 20px;
+        padding: 20px;
     }
 
     #slideshow {
-        margin: 0 auto 20px auto;
+        margin: 0 auto 40px auto;
     }
 
     @media (max-width:500px)  {
@@ -73,35 +83,47 @@
 
         h1 {
             font-size: 25px;
+            padding-left: 10px;
         }
 
         #categories {
             display: grid;
-            grid-template-columns: 50% 50%;
-            grid-template-rows: 50px 50px;
-            margin-top: 20px;
+            grid-template-columns: 1fr 1fr;
+            margin: 30px 0 30px 0;
+            gap: 10px;
+            padding: 10px;
+            justify-items: center;
         }
 
         .category-title {
-            background-color: #F2F2F2;
+            background-color: #00A896;
             text-align: center;
-            line-height: 50px;
-            margin: 1px;
+            line-height: 40px;
+            border-radius: 50px;
+            color: #ffffff;
+            font-weight: bold;
+            height: 40px;
+            width: 80%;
         }
 
         #features {
-            width: 100%;
-            padding: 0;
-            margin: 0;
+            padding-bottom: 15px;
         }
 
         #product-grid {
-            grid-template-columns: 50% 50%;
-            grid-template-rows: 210px 210px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 200px 200px;
+            gap: 20px;
+            padding: 20px;
         }
 
         #slideshow {
             margin: 0 0 20px 0;
+        }
+
+        .router-link {
+            text-decoration: none;
+            color: #ffffff;
         }
     }
 </style>

@@ -23,22 +23,24 @@
 <style scoped>
     #whole-container {
         position: relative;
-        z-index: -100;
+        /* z-index: -100; */
+        /* z-index: -1; */
     }
 
     #nav {
         display: block;
         position: fixed;
         width: calc(100vw - 17px);
+        z-index: 1;
     }
 
     #container {
         padding-top: 91px;
-        /* padding-bottom: 50px; */
     }
 
     #mobile-nav {
         display: none;
+        z-index: 1;
     }
 
     #footer {

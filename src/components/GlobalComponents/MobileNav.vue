@@ -118,6 +118,9 @@
         margin-top: 60px;
         padding-top: 20px;
         z-index: 99;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
     }
 
     #categories {
@@ -176,11 +179,13 @@
                     menu.style.left = "-120%";
                     menu.style.transition = "all 0.4s";
                     menuIcon.style.transform = "rotate(0deg)";
+                    // menu.style.display = "none";
                 } else {
                     menu.style.left = "0px";
                     menu.style.transition = "all 0.4s";
                     menuIcon.style.transform = "rotate(90deg)";
                     menuIcon.style.transition = "all 0.4s";
+                    // menu.style.display = "block";
                 }
             },
             getUserId() {

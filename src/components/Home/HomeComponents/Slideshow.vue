@@ -37,8 +37,6 @@
     }
 
     .slide-img {
-        /* border-radius: 10px; */
-        /* height: 100%; */
         width: 100%;
         max-height: 70vh;
         object-fit: cover;
@@ -56,7 +54,7 @@
         }
 
         .slide-img {
-            min-height: 85vh;
+            min-height: 50vh;
             border-radius: 0;
             object-fit: cover;
             margin-bottom: 5px;
@@ -81,8 +79,6 @@
                     "Browse our wide arrange of flowers.",
                     "Plant a tree today."
                 ],
-                timer: null,
-                currentIndex: 0,
                 settings: {
                     "arrows": false,
                     "dots": true,
@@ -92,7 +88,7 @@
                     "fade": true,
                     "autoplay": true,
                     "speed": 2000,
-                    "autoplaySpeed": 4000,
+                    "autoplaySpeed": 6000,
                     "cssEase": "linear",
                 }
             };
