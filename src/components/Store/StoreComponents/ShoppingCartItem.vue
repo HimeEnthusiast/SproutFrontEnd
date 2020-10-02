@@ -1,9 +1,44 @@
 <template>
-    <div id="root">
+    <div id="root-cart">
         <img id="product-photo" :src="image" />
         <div id="product-info">
             <span id="name">{{name}}</span>
             <span id="price">${{price.toFixed(2)}}</span>
+            <div id="quantity">
+                <button class="quan-btn" id="plus" @click="increaseQuantity()">
+                    <svg
+                        id="plus-button"
+                        aria-hidden="true" 
+                        focusable="false" 
+                        data-prefix="fas" 
+                        data-icon="plus" 
+                        class="svg-inline--fa fa-plus fa-w-14" 
+                        role="img" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 448 512">
+                            <path 
+                                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+                            </path>
+                    </svg>
+                </button>
+                <span id="num">{{quantity}}</span>
+                <button class="quan-btn" id="minus" @click="decreaseQuantity()">
+                    <svg
+                        id="minus-button"
+                        aria-hidden="true" 
+                        focusable="false" 
+                        data-prefix="fas" 
+                        data-icon="minus" 
+                        class="svg-inline--fa fa-minus fa-w-14" 
+                        role="img" 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        viewBox="0 0 448 512">
+                            <path 
+                                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z">
+                            </path>
+                    </svg>
+                </button>
+            </div>
         </div>
         <div id="delete-icon" @click="deleteClick">
             <svg aria-hidden="true" 
@@ -20,22 +55,20 @@
                         </path>
             </svg>
         </div>
+        <!-- <hr> -->
     </div>
 </template>
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
 
-    #root {
+    #root-cart {
         font-family: 'Quicksand', sans-serif;
         color: #00A896;
-        box-shadow: 0 3px 5px #0000007a;
         display: flex;
-        width: 80%;
         flex-direction: row;
         padding: 20px;
         border-radius: 10px;
-        margin: 1%;
     }
 
     #product-info {
@@ -45,28 +78,64 @@
         width: 50%;
     }
 
-    #name, #price {
+    #name, #price, #quantity {
         padding: 5px;
     }
 
     #name {
         top: 0;
         font-size: 170%;
+        font-weight: bolder;
+        color: #000000;
+        /* padding-bottom: 0; */
     }
 
     #price {
-        bottom: 0;
         font-size: 120%;
+        color: #000000;
+        padding-top: 0;
+    }
+
+    #quantity {
+        border: 1px solid #00A896;
+        width: 90px;
+        padding: 0;
+        margin-top: auto;
+    }
+
+    #num {
+        display: inline-block;
+        width: 30px;
+        text-align: center;
+        color: #000000;
+    }
+
+    #plus-button, #minus-button {
+        fill: #ffffff;
+        height: 10px;
+    }
+
+    .quan-btn {
+        border: none;
+        width: 30px;
+        padding: 5px;
+        background-color: #00A896;
+        color: #ffffff;
+    }
+
+    .quan-btn:hover{
+        cursor: pointer;
     }
 
     #product-photo {
-        width: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 10px;
     }
 
     #delete-icon {
         width: 3%;
-        min-width: 30px;
+        min-width: 25px;
         margin-left: auto;
         display: flex;
         align-items: center;
@@ -74,22 +143,24 @@
 
     #delete-icon:hover {
         scale: 1.1;
+        transition: 0.3s;
         cursor: pointer;
     }
 
     #trashcan-icon {
         fill: #00A896;
+        max-width: 35px;
     }
 
     @media (max-width:690px)  {
         #root {
-            padding: 15px;
+            /* padding: 15px; */
             margin-bottom: 20px;
         }
 
         #product-photo {
-            width: 60px;
-            height: 60px;
+            width: 90px;
+            height: 90px;
         }
 
         #name {
@@ -98,7 +169,8 @@
         }
 
         #price {
-            padding: 15px 0 0 0;
+            padding: 0;
+            font-size: 14px;
         }
 
         #delete-icon {
@@ -112,11 +184,18 @@
         props: [
             'image',
             'name',
-            'price'
+            'price',
+            'quantity'
         ],
         methods: {
             deleteClick: function() {
                 this.$emit('clicked', 'value');
+            },
+            increaseQuantity() {
+                this.$emit('increase', 'value');
+            },
+            decreaseQuantity() {
+                this.$emit('decrease', 'value');
             }
         }
     }

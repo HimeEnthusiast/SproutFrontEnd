@@ -9,32 +9,38 @@
                 <h1>Checkout</h1>
             </div>
 
-            <form id="forms" @submit.prevent="sendData()">
-                <div id="left">
-                    <AddressForm @address1="address1 = $event" 
-                                @address2="address2 = $event"
-                                @city="city = $event"
-                                @province="province = $event"
-                                @postalcode="postalcode = $event"
-                                @saveAddress="saveAddress = $event"></AddressForm>
-                </div>
-
-                <div id="right">
-                    <PaymentForm @cardBearer="cardBearer = $event"
-                                @ccNumber="ccNumber = $event"
-                                @cvv="cvv = $event"
-                                @savePayment="savePayment = $event">
-                    </PaymentForm>
-
-                    <GuestEmailForm v-if="!jwtPresent"
-                                @email="email = $event">
-                    </GuestEmailForm>
-
-                    <div id="submit-container">
-                        <input type="submit" id="order-button" value="Complete Order" />
+            <form id="forms" @submit.prevent="sendData()" novalidate>
+                <VueSlickCarousel ref="carousel" v-bind="settings">
+                    <div id="address">
+                        <AddressForm ref="addressForm"
+                                    @address1="address1 = $event" 
+                                    @address2="address2 = $event"
+                                    @city="city = $event"
+                                    @province="province = $event"
+                                    @postalcode="postalcode = $event"
+                                    @saveAddress="saveAddress = $event"
+                                    @formComplete="next()">
+                        </AddressForm>
                     </div>
-                </div>
+
+                    <div id="payment">
+                        <PaymentForm @cardBearer="cardBearer = $event"
+                                    @ccNumber="ccNumber = $event"
+                                    @cvv="cvv = $event"
+                                    @savePayment="savePayment = $event"
+                                    @formComplete="!jwtPresent ? next() : sendData()">
+                        </PaymentForm>
+                    </div>
+
+                    <div id="guest-email">
+                        <GuestEmailForm v-if="!jwtPresent"
+                            @email="email = $event"
+                            @formComplete="sendData()">
+                        </GuestEmailForm>
+                    </div>
+                </VueSlickCarousel>
             </form>
+
         </div>
     </div>
 </template>
@@ -46,6 +52,7 @@
         display: flex;
         justify-content: center;
         font-family: 'Quicksand', sans-serif;
+        min-height: calc(100vh - 60px);
     }
 
     #container {
@@ -55,33 +62,27 @@
 
     #forms {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         width: 90%;
         margin: 0;
+        padding-bottom: 100px;
     }
 
     #loader {
-        position: absolute;
+        position: fixed;
         display: none;
         width: 100%;
-        height: calc(100vh - 100.8px);
+        height: 100vh;
         background: #0000007a;
-        margin-top: -2%;
-        z-index: 100;
+        margin-top: 10px;
+        left: 0;
+        z-index: 1;
     }
 
     #loading-icon {
         position: relative;
         margin: auto;
-    }
-
-    #left {
-        width: 49%;
-    }
-
-    #right {
-        width: 49%;
     }
 
     #submit-container {
@@ -106,6 +107,16 @@
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
         cursor: pointer;
+    }
+
+    #address {
+        /* padding: 10px; */
+        height: 60vh;
+        padding-bottom: 100px;
+    }
+
+    #payment {
+        height: 60vh;
     }
 
     @media (max-width:690px)  {
@@ -160,15 +171,17 @@
     import AddressForm from "./StoreComponents/AddressForm";
     import PaymentForm from "./StoreComponents/PaymentForm";
     import GuestEmailForm from "./StoreComponents/GuestEmailForm";
-    // import LoadingScreen from "../GlobalComponents/LoadingScreen";
+    import VueSlickCarousel from 'vue-slick-carousel';
+    import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+    import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
     export default {
         name: "checkout",
         components: {
             AddressForm,
             PaymentForm,
-            GuestEmailForm
-            // LoadingScreen
+            GuestEmailForm,
+            VueSlickCarousel
         },
         data() {
             return {
@@ -185,26 +198,34 @@
                 savePayment: false,
                 jwtPresent: this.$store.getters.getAuthentication,
                 cart: [],
-                jwt: this.$cookies.get('jwt').replace(/"/g,"")
+                products: [],
+                jwt: this.$cookies.get('jwt').replace(/"/g,""),
+                settings: {
+                    "draggable": false,                    
+                }
             }
         },
         mounted() {
-            alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
-            // this.$store.commit('setLoadingStatus', false);
+            // alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
 
             if(localStorage.getItem('cart')) {
-                this.cart = JSON.parse(localStorage.getItem('cart'));
+                this.products = JSON.parse(localStorage.getItem('cart'));
+                this.cart = [];
+
+                this.products.forEach(x => {
+                    if(x.quantity > 1) {
+                        for(var i = 0; i < x.quantity; i++) {
+                            this.cart.push(x.id);
+                        }
+                    } else {
+                        this.cart.push(x.id);
+                    }
+                });
             }
         },
-        // computed: {
-        //     isLoading() {
-        //         return this.$store.getters.getLoadingStatus;
-        //     }
-        // },
         methods: {
             sendData() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
-                // this.$store.commit('setLoadingStatus', true);
                 document.getElementById("loader").style.display = "flex";
 
                 if(this.jwtPresent) {
@@ -256,6 +277,9 @@
                         console.log(error);
                     });
                 }
+            },
+            next() {
+                this.$refs.carousel.next();
             }
         }
     }

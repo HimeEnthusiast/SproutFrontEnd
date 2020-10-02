@@ -58,7 +58,8 @@
 
     #root {
         font-family: 'Quicksand', sans-serif;
-        height: calc(100vh - 100.8px);
+        height: calc(100vh - 90px);
+        padding-bottom: 40px;
         display: flex;
         flex-direction: row;
     }
