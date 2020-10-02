@@ -70,6 +70,7 @@
 
     #root {
         font-family: 'Quicksand', sans-serif;
+        width: 100vw;
     }
 
     .router-link {
@@ -103,7 +104,7 @@
 
     #categories {
         display: flex;
-        width: 75%;
+        width: 40%;
     }
 
     #icons {

@@ -10,7 +10,6 @@
             </div>
 
             <form id="forms" @submit.prevent="sendData()" novalidate>
-                <!-- <FormCarousel></FormCarousel> -->
                 <VueSlickCarousel ref="carousel" v-bind="settings">
                     <div id="address">
                         <AddressForm ref="addressForm"
@@ -29,22 +28,19 @@
                                     @ccNumber="ccNumber = $event"
                                     @cvv="cvv = $event"
                                     @savePayment="savePayment = $event"
-                                    @formComplete="next()">
+                                    @formComplete="!jwtPresent ? next() : sendData()">
                         </PaymentForm>
                     </div>
 
                     <div id="guest-email">
                         <GuestEmailForm v-if="!jwtPresent"
                             @email="email = $event"
-                            @formComplete="submitForm()">
+                            @formComplete="sendData()">
                         </GuestEmailForm>
-
-                        <!-- <div id="submit-container">
-                            <input type="submit" id="order-button" value="Complete Order" />
-                        </div> -->
                     </div>
                 </VueSlickCarousel>
             </form>
+
         </div>
     </div>
 </template>
@@ -74,26 +70,19 @@
     }
 
     #loader {
-        position: absolute;
+        position: fixed;
         display: none;
         width: 100%;
-        height: calc(100vh - 100.8px);
+        height: 100vh;
         background: #0000007a;
-        margin-top: -2%;
-        z-index: 100;
+        margin-top: 10px;
+        left: 0;
+        z-index: 1;
     }
 
     #loading-icon {
         position: relative;
         margin: auto;
-    }
-
-    #left {
-        /* width: 49%; */
-    }
-
-    #right {
-        /* width: 49%; */
     }
 
     #submit-container {
@@ -118,6 +107,16 @@
         box-shadow: 0 2px 2px #0000007a;
         transition: 0.3s;
         cursor: pointer;
+    }
+
+    #address {
+        /* padding: 10px; */
+        height: 60vh;
+        padding-bottom: 100px;
+    }
+
+    #payment {
+        height: 60vh;
     }
 
     @media (max-width:690px)  {
@@ -199,6 +198,7 @@
                 savePayment: false,
                 jwtPresent: this.$store.getters.getAuthentication,
                 cart: [],
+                products: [],
                 jwt: this.$cookies.get('jwt').replace(/"/g,""),
                 settings: {
                     "draggable": false,                    
@@ -206,22 +206,26 @@
             }
         },
         mounted() {
-            alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
+            // alert("Please Note: \n\nThis is a FAKE store, created only to showcase in my portfolio. There is nothing being sold. Make sure to not enter any real personal information when using this form, as it will be saved in a database.\n\nThank you!\n\n");
 
             if(localStorage.getItem('cart')) {
-                this.cart = JSON.parse(localStorage.getItem('cart'));
+                this.products = JSON.parse(localStorage.getItem('cart'));
+                this.cart = [];
+
+                this.products.forEach(x => {
+                    if(x.quantity > 1) {
+                        for(var i = 0; i < x.quantity; i++) {
+                            this.cart.push(x.id);
+                        }
+                    } else {
+                        this.cart.push(x.id);
+                    }
+                });
             }
         },
         methods: {
-            submitForm() {
-                // let form = document.getElementById("forms");
-                
-                alert("hi");
-                // form.submit();
-            },
             sendData() {
                 const url = process.env.VUE_APP_DOMAIN_NAME_AUTH;
-                // this.$store.commit('setLoadingStatus', true);
                 document.getElementById("loader").style.display = "flex";
 
                 if(this.jwtPresent) {

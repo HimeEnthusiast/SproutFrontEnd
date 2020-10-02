@@ -23,10 +23,13 @@
         text-align: center;
         justify-content: center;
         padding-top: 7%;
+        min-height: calc(100vh - 157px);
     }
 
     #left {
-        margin: auto 70px 0 0;
+        /* padding-left: 20px; */
+        /* margin-right: 20px; */
+        width: 40%;
     }
 
     h1 {
@@ -41,8 +44,11 @@
 
     #right {
         display: flex;
+        /* margin-left: 20px; */
         flex-direction: column;
-        margin: auto 0 auto 70px;
+        /* padding-left: 20px; */
+        width: 40%;
+        padding-top: 5%;
     }
 
     #view-order {

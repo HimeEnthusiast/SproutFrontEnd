@@ -56,7 +56,6 @@
     }
 
     #dropdown-container[data-open="false"] {
-        /* height: 0; */
         display: none;
     }
 
@@ -75,7 +74,6 @@
 
     .subcategory[data-open="true"] {
         display: block;
-        /* font-size: 5vw; */
     }
 
     .subcategory {
@@ -86,6 +84,7 @@
     .router-link {
         text-decoration: none;
         color: #00A896;
+        margin: auto;
     }
 </style>
 

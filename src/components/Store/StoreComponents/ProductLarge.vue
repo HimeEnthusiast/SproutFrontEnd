@@ -108,7 +108,6 @@
         font-weight: bolder;
         color: #ffffff;
         border-radius: 5px;
-        /* margin-top: 50px; */
     }
 
     #add-cart-button:hover {
@@ -121,15 +120,11 @@
     @media (max-width:950px)  {
         #bottom {
             flex-direction: column;
-            /* margin: 0 auto 0 auto; */
             justify-content: center;
-            /* justify-items: center; */
             padding-bottom: 100px;
-            /* width: 100vw; */
         }
 
         #product-photo {
-            /* width: 85%; */
             width: 80vw;
             height: 50vh;
             margin: 0 auto 0 auto;
@@ -198,7 +193,6 @@
         #right-inner {
             position: initial;
             flex-direction: row;
-            /* margin: 40px auto auto 8px; */
         }
 
         #add-cart-button {
@@ -210,7 +204,6 @@
 
         #product-price {
             font-size: 20px;
-            /* padding: 10px; */
             margin-right: 15px;
         }
     }
@@ -231,6 +224,10 @@
                 subcategory: "",
                 image: "",
                 cart: [],
+                product: {
+                    id: 0,
+                    quantity: 0
+                },
                 addCartButton: ""
             }
         },
@@ -257,9 +254,34 @@
                 if(localStorage.getItem('cart') != null) {
                     this.cart = JSON.parse(localStorage.getItem('cart'));
                 }
+
+                let prod = {
+                    id: this.id,
+                    quantity: 1
+                }
+
+                // console.log(prod);
                 
-                this.cart.push(this.id);
-                localStorage.setItem('cart', JSON.stringify(this.cart));
+                // this.cart.push(this.id);
+                // localStorage.setItem('cart', JSON.stringify(this.cart));
+                
+                if(this.cart.length > 0) {
+                    this.cart.forEach(x => {
+                        if(x.id == this.id) {
+                            console.log("This array is more than 0, and this id has been found.");
+                            x.quantity++;
+                            localStorage.setItem('cart', JSON.stringify(this.cart));
+                        } else {
+                            console.log("This array is more than 0, but this id has not been found.");
+                            this.cart.push(prod);
+                            localStorage.setItem('cart', JSON.stringify(this.cart));
+                        }
+                    });
+                } else {
+                    console.log("This array is more than 0, and this id has been found.");
+                    this.cart.push(prod);
+                    localStorage.setItem('cart', JSON.stringify(this.cart));
+                }
             }
         }
     }

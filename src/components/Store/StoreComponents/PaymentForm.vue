@@ -20,9 +20,26 @@
             </fieldset>
         </div>
 
-        <button type="button" class="custom-arrow" @click="paymentComplete()">
-            >
+        <button type="button" class="custom-arrow" v-if="!jwtPresent" @click="paymentComplete()">
+                <svg 
+                    id="next-arrow"
+                    aria-hidden="true" 
+                    focusable="false" 
+                    data-prefix="fas" 
+                    data-icon="arrow-right" 
+                    class="svg-inline--fa fa-arrow-right fa-w-14" 
+                    role="img" 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 448 512">
+                        <path 
+                            d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z">
+                        </path>
+                </svg>
         </button>
+
+        <div id="submit-container" v-if="jwtPresent">
+            <button type="button" id="order-button" @click="paymentComplete()">Complete Order</button>
+        </div>
     </div>
 </template>
 
@@ -31,6 +48,9 @@
 
     #root {
         font-family: 'Quicksand', sans-serif;
+        padding: 10px;
+        height: 60vh;
+        position: relative;
     }
 
     #payment-container {
@@ -67,6 +87,36 @@
         color: rgb(240, 0, 0);
     }
 
+    .custom-arrow {
+        display: block;
+        position: absolute;
+        padding: 5px;
+        width: 70px;
+        background-color: #00A896;
+        border: none;
+        fill: #ffffff;
+        border-radius: 5px;
+        bottom: 0;
+        right: 0;
+        margin-bottom: 30px;
+        margin-right: 10px;
+    }
+
+    .custom-arrow:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 2px #0000007a;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    #button-text {
+        font-size: 20px;
+    }
+
+    #next-arrow {
+        height: 25px;
+    }
+
     @media (max-width:690px)  {
         #root {
             margin-bottom: 25px;
@@ -89,7 +139,8 @@
                 savePayment: false,
                 nameError: false,
                 ccNumberError: false,
-                cvvError: false
+                cvvError: false,
+                jwtPresent: this.$store.getters.getAuthentication
             }
         },
         watch: {

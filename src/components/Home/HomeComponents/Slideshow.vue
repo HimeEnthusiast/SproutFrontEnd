@@ -23,6 +23,7 @@
     #slideshow {
         /* padding: 15px 15px 0 15px; */
         max-width: 100vw;
+        padding: 0;
         /* max-height: 50vh; */
     }
 
@@ -39,6 +40,7 @@
     .slide-img {
         width: 100%;
         max-height: 70vh;
+        min-width: 100vw;
         object-fit: cover;
         margin-bottom: 15px;
     }

@@ -7,7 +7,15 @@
 
         <div id="item-list">
             <div id="cart-items" v-for="product in products" :key="product.id">
-                <ShoppingCartItem :image="product.image" :name="product.name" :price="product.price" @clicked="deleteClick(product.id)"></ShoppingCartItem>
+                <ShoppingCartItem
+                    :key="reset" 
+                    :image="product.image" 
+                    :name="product.name" 
+                    :price="product.price" 
+                    :quantity="product.quantity" 
+                    @clicked="deleteClick(product.id)"
+                    @increase="increaseQuantity(product)"
+                    @decrease="decreaseQuantity(product)"></ShoppingCartItem>
                 <hr>
             </div>
         </div>
@@ -68,16 +76,16 @@
         margin-top: 1%;
         font-size: 250%;
         color: #000000;
+        margin-left: auto;
     }
 
     #total-title {
         font-weight: bolder;
-        float: left;
+        /* float: left; */
     }
 
     #cost-title {
-        margin-left: auto;
-        float: right;
+        padding-left: 20px;
         padding-right: 5px;
     }
 
@@ -176,19 +184,22 @@
                 cart: JSON.parse(localStorage.getItem('cart')),
                 name: "",
                 price: 0.0,
-                quantity: 0,
+                quantity: 1,
                 image: "" ,
                 products: [],
                 totalCost: 0.0,
-                cartEmpty: true
+                cartEmpty: true,
+                reset: 0
             }
         },
         methods: {
-            loadProduct: function(id) {
+            loadProduct: function(id, quantity) {
                 const url = process.env.VUE_APP_DOMAIN_NAME_PRODUCT;
 
                 axios.get(url + "/product-by-id/" + id)
                 .then((response) => {
+                    response.data.quantity = quantity;
+                    
                     this.products.push(response.data);
                 }, (error) => {
                     console.log(error);
@@ -203,19 +214,67 @@
                 if(this.products.length > 0) {
                     this.cartEmpty = false;
                 }
+            },
+            increaseQuantity(product) {
+                product.quantity = product.quantity + 1;
+
+                this.cart.forEach(x => {
+                    if(x.id == product.id) {
+                        console.log("Yes! " + x.id + " and " + product.id + " match.");
+                        x.quantity++;
+                        localStorage.setItem('cart', JSON.stringify(this.cart));
+                    } else {
+                        console.log("No!" + x.id + " and " + product.id + " do not match.");
+                    }
+                });
+                
+                return product;
+            },
+            decreaseQuantity(product) {
+                if(product.quantity < 2) {
+                    console.log("No");
+                } else {
+                    product.quantity = product.quantity - 1;
+
+                    this.cart.forEach(x => {
+                        if(x.id == product.id) {
+                            console.log("Yes! " + x.id + " and " + product.id + " match.");
+                            x.quantity--;
+                            localStorage.setItem('cart', JSON.stringify(this.cart));
+                        } else {
+                            console.log("No!" + x.id + " and " + product.id + " do not match.");
+                        }
+                    });
+                }
+
+                return product;
             }
         },
         watch: {
-            products: function() {
-                this.cartCheck();
+            products: {
+                deep: true,
+                handler() {
+                    this.cartCheck();
 
-                this.totalCost = 0;
-                this.products.forEach(x => {
-                    this.totalCost += x.price;
-                });
+                    this.totalCost = 0;
+                    this.products.forEach(x => {
+                        // this.totalCost += x.price;
+                        this.cart.forEach(y => {
+                            if (y.id == x.id) {
+                                if(y.quantity > 1) {
+                                    for(let i = 0; i < y.quantity; i++) {
+                                        this.totalCost += x.price;
+                                    }
+                                } else {
+                                    this.totalCost += x.price;
+                                }
+                            }
+                        });
+                    });
 
-                if(!this.products.length) {
-                    this.$emit('emptyCart', 1);
+                    if(!this.products.length) {
+                        this.$emit('emptyCart', 1);
+                    }
                 }
             }
         },
@@ -224,7 +283,7 @@
         },
         created() {
             this.cart.forEach(x => {
-                this.loadProduct(x);
+                this.loadProduct(x.id, x.quantity);
             });
         }
     }

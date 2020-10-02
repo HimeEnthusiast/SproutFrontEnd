@@ -21,6 +21,10 @@
 </template>
 
 <style scoped>
+    #whole {
+        width: 100vw;
+    }
+
     #whole-container {
         position: relative;
         /* z-index: -100; */
