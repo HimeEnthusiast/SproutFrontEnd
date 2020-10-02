@@ -66,6 +66,7 @@
     #root {
         font-family: 'Quicksand', sans-serif;
         color: #00A896;
+        position: relative;
     }
 
     #top-bar {
@@ -112,11 +113,14 @@
         background-color: #ffffff;
         position: absolute;
         width: 100%;
-        top: -120%;
+        left: -120%;
         /* top: 0; */
         margin-top: 60px;
         padding-top: 20px;
         z-index: 99;
+        overflow-x: hidden;
+        overflow-y: scroll;
+
     }
 
     #categories {
@@ -171,15 +175,17 @@
                 let menu = this.$refs["side-bar"];
                 let menuIcon = this.$refs["menu-icon"];
 
-                if(menu.style.top == "0px") { //If open, close
-                    menu.style.top = "-120%";
+                if(menu.style.left == "0px") { //If open, close
+                    menu.style.left = "-120%";
                     menu.style.transition = "all 0.4s";
                     menuIcon.style.transform = "rotate(0deg)";
+                    // menu.style.display = "none";
                 } else {
-                    menu.style.top = "0px";
+                    menu.style.left = "0px";
                     menu.style.transition = "all 0.4s";
                     menuIcon.style.transform = "rotate(90deg)";
                     menuIcon.style.transition = "all 0.4s";
+                    // menu.style.display = "block";
                 }
             },
             getUserId() {

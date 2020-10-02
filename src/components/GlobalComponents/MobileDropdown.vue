@@ -31,6 +31,7 @@
 
     .category-title {
         padding: 20px;
+        font-size: 7vw;
     }
 
     #arrow-button {
@@ -55,7 +56,6 @@
     }
 
     #dropdown-container[data-open="false"] {
-        /* height: 0; */
         display: none;
     }
 
@@ -64,6 +64,7 @@
         background-color: #B2EDE0;
         width: 100%;
         display: flex;
+        
         flex-direction: column;
         font-weight: normal;
         font-size: 25px;
@@ -72,16 +73,18 @@
     }
 
     .subcategory[data-open="true"] {
-        display: initial;
+        display: block;
     }
 
     .subcategory {
         padding: 10px;
+        font-size: 5vw;
     }
 
     .router-link {
         text-decoration: none;
         color: #00A896;
+        margin: auto;
     }
 </style>
 
@@ -119,7 +122,7 @@
                 let dropdown = this.$refs["dropdown"];
 
                 
-                if(arrow.getAttribute("data-rotation") == 0) {
+                if(arrow.getAttribute("data-rotation") == 0) { //if open
                     arrow.setAttribute("data-rotation", 180);
                     arrow.classList.add("rotate-180");
                     arrow.style.transition = "all 0.4s";
@@ -127,7 +130,7 @@
                     dropdown.setAttribute("data-open", false);
                     dropdown.classList.add("dropdown-false");
                     dropdown.style.transition = "all 0.4s";
-                } else {
+                } else { //if closed
                     arrow.setAttribute("data-rotation", 0);
                     arrow.classList.add("rotate-0");
                     arrow.style.transition = "all 0.4s";
@@ -135,6 +138,8 @@
                     dropdown.setAttribute("data-open", true);
                     dropdown.classList.add("dropdown-true");
                     dropdown.style.transition = "all 0.4s";
+
+                    
                 }
             },
             subcategoryExists(exists) {

@@ -69,16 +69,10 @@
         text-decoration: none;
         color: #00A896;
     }
-/* 
-    @media only screen and (max-width: 990px) {
 
-        #title {
-            padding: 0 20% 0 20%;
-            margin: auto;
-            width: 100%;
-        }
-    } */
-
+    .router-link a {
+        margin: auto;
+    }
 </style>
 
 <script>
