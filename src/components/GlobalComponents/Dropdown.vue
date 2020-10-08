@@ -68,6 +68,7 @@
     .router-link {
         text-decoration: none;
         color: #00A896;
+        margin: auto;
     }
 
     .router-link a {

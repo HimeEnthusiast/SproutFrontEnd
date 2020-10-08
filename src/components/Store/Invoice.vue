@@ -23,7 +23,6 @@
             </div>
         </div>
         <div id="bottom">
-            <!-- <span id="total-title">Total Cost:</span> -->
             <span id="total-cost">Total Cost: ${{totalCost.toFixed(2)}}</span>
         </div>
     </div>
@@ -33,7 +32,6 @@
     @import url('https://fonts.googleapis.com/css?family=Quicksand|Raleway&display=swap');
 
     #root {
-        /* margin: 3%; */
         padding: 30px;
         font-family: 'Quicksand', sans-serif;
         min-height: calc(100vh - 90px);

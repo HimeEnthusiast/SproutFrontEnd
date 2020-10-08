@@ -8,27 +8,22 @@
             <MobileNavbar :key="$route.fullPath"></MobileNavbar>
         </div>
 
-        <div id="whole-container">
-            <div id="container">
-                <router-view :key="reset" @emptyCart="reset = reset + 1"></router-view>
-            </div>
+        <!-- <vuescroll :ops="ops"> -->
+            <div id="whole-container">
+                <div id="container">
+                    <router-view :key="reset" @emptyCart="reset = reset + 1"></router-view>
+                </div>
 
-            <div id="footer">
-                <Footer></Footer>
+                <div id="footer">
+                    <Footer></Footer>
+                </div>
             </div>
-        </div>
     </div>
 </template>
 
 <style scoped>
-    #whole {
-        width: 100vw;
-    }
-
     #whole-container {
         position: relative;
-        /* z-index: -100; */
-        /* z-index: -1; */
     }
 
     #nav {
@@ -72,7 +67,7 @@
 <script>
     import Navbar from './components/GlobalComponents/Navbar';
     import MobileNavbar from './components/GlobalComponents/MobileNav';
-     import Footer from './components/GlobalComponents/Footer';
+    import Footer from './components/GlobalComponents/Footer';
 
     export default {
         name: 'App',
@@ -84,7 +79,7 @@
         data() {
             return {
                 reset: 0
-            }
+                }
         }
     }
 </script>

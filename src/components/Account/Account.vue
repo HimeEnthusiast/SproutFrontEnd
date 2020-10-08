@@ -18,6 +18,7 @@
     #root-top {
         font-family: 'Quicksand', sans-serif;
         display: flex;
+        padding-bottom: 110px;
     }
 
     #left {
